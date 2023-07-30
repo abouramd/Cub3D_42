@@ -21,7 +21,6 @@ all:$(NAME)
 
 $(NAME):$(OBJ)
 	@make bonus -C libft
-	@$(RM) $(DIR_B)main.o
 	@echo "\033[1;3;34m - compile libft with the object files.\033[0m"
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(INC) $(LIB)
 	@echo "\033[1;3;32m ✅ $(NAME) is done.\033[0m"
@@ -32,11 +31,11 @@ $(NAME):$(OBJ)
 
 clean:
 	@make clean -C libft
-	@$(RM) $(OBJ) $(OBJ_B)
+	@$(RM) $(OBJ)
 	@echo "\033[1;3;31m ❎ remove the object files of $(NAME).\033[0m"
 
 fclean:clean
-	@$(RM) $(NAME) $(NAME_B)
+	@$(RM) $(NAME)
 	@rm -rf libft/libft.a
 	@echo "\033[1;3;31m ❎ remove libft.a\033[0m"
 	@echo "\033[1;3;31m ❎ remove $(NAME).\033[0m"
