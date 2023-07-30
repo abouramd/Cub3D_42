@@ -27,19 +27,18 @@ $(NAME):$(OBJ)
 	@echo "\033[1;3;32m ✅ $(NAME) is done.\033[0m"
 
 .c.o:
-	@$(CC) $(CFLAGS) -c $^ -o $@ $(INC) $(INC_B)
+	@$(CC) $(CFLAGS) -c $^ -o $@ $(INC)
 	@echo "\033[1;3;34m - creat $@ from $<.\033[0m"
 
 clean:
 	@make clean -C libft
 	@$(RM) $(OBJ) $(OBJ_B)
-	@echo "\033[1;3;31m ❎ remove the object files of $(NAME) and $(NAME_B).\033[0m"
+	@echo "\033[1;3;31m ❎ remove the object files of $(NAME).\033[0m"
 
 fclean:clean
 	@$(RM) $(NAME) $(NAME_B)
 	@rm -rf libft/libft.a
 	@echo "\033[1;3;31m ❎ remove libft.a\033[0m"
 	@echo "\033[1;3;31m ❎ remove $(NAME).\033[0m"
-	@echo "\033[1;3;31m ❎ remove $(NAME_B).\033[0m"
 
 re: fclean all
