@@ -1,5 +1,5 @@
 NAME = cub3D
-DIR = ./mandatory/
+DIR =
 SRC_PARS =
 SRC_RAYC =
 SRC = $(addprefix $(DIR), main.c $(addprefix pars/,$(SRC_PARS)) $(addprefix ray_casting/,$(SRC_RAYC)))
