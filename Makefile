@@ -1,32 +1,17 @@
-UNAME = $(shell uname -s)
-
-# mandatory
 NAME = cub3D
 DIR = ./mandatory/
-SRC_PARS = pars.c put_err.c init.c check_path.c check_content.c check_map.c fill_data.c threads.c
-SRC_RAYC = ray_casting.c handel_event.c step_manag.c draw2d.c dda.c rays.c
+SRC_PARS =
+SRC_RAYC =
 SRC = $(addprefix $(DIR), main.c $(addprefix pars/,$(SRC_PARS)) $(addprefix ray_casting/,$(SRC_RAYC)))
 OBJ = $(SRC:.c=.o)
 INC = -I libft/ -I $(DIR)include
 LIB = -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
+
+UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
 	INC = -I libft/ -I $(DIR)include -I ./minilibx-linux
 	LIB = -L libft/ -lft -pthread -L ./minilibx-linux -lmlx_Linux -L /usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 endif
-# bonus
-NAME_B = cub3D_B
-DIR_B = ./bonus/
-SRC_PARS_B = pars.c put_err.c init.c check_path.c check_content.c check_map.c fill_data.c threads.c animation.c
-SRC_RAYC_B = ray_casting.c handel_event.c step_manag.c draw2d.c dda.c rays.c mini_map.c
-SRC_B = $(addprefix $(DIR_B), main.c $(addprefix pars/,$(SRC_PARS_B)) $(addprefix ray_casting/,$(SRC_RAYC_B)))
-OBJ_B = $(SRC_B:.c=.o)
-INC_B = -I libft/ -I $(DIR_B)include
-LIB_B = -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
-ifeq ($(UNAME), Linux)
-	INC_B = -I libft/ -I $(DIR_B)include -I ./minilibx-linux
-	LIB_B = -L libft/ -lft -pthread -L ./minilibx-linux -lmlx_Linux -lmlx -L /usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-endif
-
 
 CC:= cc
 CFLAGS:= -fsanitize=address -g3
@@ -34,22 +19,12 @@ RM:= rm -rf
 
 all:$(NAME)
 
-bonus:$(NAME_B)
-
 $(NAME):$(OBJ)
 	@make bonus -C libft
 	@$(RM) $(DIR_B)main.o
 	@echo "\033[1;3;34m - compile libft with the object files.\033[0m"
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(INC) $(LIB)
 	@echo "\033[1;3;32m ✅ $(NAME) is done.\033[0m"
-
-$(NAME_B):$(OBJ_B)
-	@make bonus -C libft
-	@$(RM) $(DIR)main.o
-	@echo "\033[1;3;34m - compile libft with the object files.\033[0m"
-	@echo "\033[1;3;34m - compile libft with the object files.\033[0m"
-	@$(CC) $(CFLAGS) $(OBJ_B) -o $(NAME_B) $(INC_B) $(LIB_B)
-	@echo "\033[1;3;32m ✅ $(NAME_B) is done.\033[0m"
 
 .c.o:
 	@$(CC) $(CFLAGS) -c $^ -o $@ $(INC) $(INC_B)
