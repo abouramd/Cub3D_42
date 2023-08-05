@@ -2,6 +2,7 @@
 # define CUB_H
 # include <fcntl.h>
 # include <mlx.h>
+#include "../minilibx-linux/mlx.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <errno.h>
@@ -10,7 +11,7 @@
 # include <sys/time.h>
 # include <stdbool.h>
 # include <pthread.h>
-# include "libft.h"
+# include "../libft/libft.h"
 
 # if defined(__APPLE__)
 # define    KEY_W 13

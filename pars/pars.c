@@ -1,4 +1,4 @@
-#include "pars.h"
+#include "../include/pars.h"
 
 #define HIEGTH_WRITE 100
 #define WIDTH_WRITE 120

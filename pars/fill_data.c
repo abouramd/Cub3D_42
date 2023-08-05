@@ -1,4 +1,4 @@
-#include "pars.h"
+#include "../include/pars.h"
 
 int	create_rgb(int *p)
 {
@@ -71,9 +71,9 @@ int	fill_data(t_global *f, t_pars *ptr)
 	f->player_x = ptr->player_x;
 	f->player_y = ptr->player_y;
 	f->F = create_rgb(ptr->F);
-	f->draw.F = f->F;
+	//f->draw.F = f->F;
 	f->C = create_rgb(ptr->C);
-	f->draw.C = f->C;
+	//f->draw.C = f->C;
 	f->field_of_view = ptr->field_of_view;
 	return (0);
 }
