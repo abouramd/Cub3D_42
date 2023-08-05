@@ -1,6 +1,6 @@
 #include "../include/ray_casting.h"
 
-int	ft_loop(t_global *data)
+int ft_loop(t_global *data)
 {
 	if (data->event)
 	{
@@ -12,14 +12,14 @@ int	ft_loop(t_global *data)
 	return (0);
 }
 
-int	ft_destroy_win(t_global *data)
+int ft_destroy_win(t_global *data)
 {
-	(void)data;
+	(void) data;
 	exit(0);
 	return (1);
 }
 
-int	ft_key(int key, t_global *data)
+int ft_key(int key, t_global* data)
 {
 	if (key == KEY_ENTER)
 		data->start = true;
