@@ -42,7 +42,7 @@ void start_game(t_global *f, int width, int hiegth)
 		y ++;
 	}
 	mlx_put_image_to_window(f->mlx, f->mlx_win, f->img.img, 0, 0);
-	read_to_play(f, width, hiegth);
+	//read_to_play(f, width, hiegth);
 }
 
 int git_info(t_global *f, int width, int hiegth)
@@ -70,11 +70,11 @@ void get_angle(t_global *f)
 	if (f->field_of_view == 'E')
 		f->angle_of_view = 0;
 	else if (f->field_of_view == 'N')
-		f->angle_of_view = PI / 2;
+		f->angle_of_view = M_PI_2;
 	else if (f->field_of_view == 'W')
-		f->angle_of_view = PI;
+		f->angle_of_view = M_PI;
 	else
-		f->angle_of_view = 3 * PI / 2;
+		f->angle_of_view = 3 * M_PI_2;
 }
 
 int	pars(t_global *f, int ac, char **av)
@@ -98,5 +98,6 @@ int	pars(t_global *f, int ac, char **av)
 	if (git_info(f, f->width * CUB_SIZE, f->hiegth * CUB_SIZE) == -1)
 		return (ft_destroy_image(f), -1);
 	get_angle(f);
+	f->event = false;
 	return 0;
 }

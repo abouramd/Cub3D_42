@@ -12,6 +12,7 @@
 # include <stdbool.h>
 # include <pthread.h>
 # include "../libft/libft.h"
+# include <math.h>
 
 # if defined(__APPLE__)
 # define    KEY_W 13
@@ -21,6 +22,7 @@
 # define    KEY_ECH 53
 # define    KEY_Q 12
 # define    KEY_SP 49
+# define	KEY_ENTER 36
 # else
 # define    KEY_W 119
 # define    KEY_LEFT 65361
@@ -29,6 +31,7 @@
 # define    KEY_ECH 65307
 # define    KEY_Q 113
 # define    KEY_SP 32
+# define	KEY_ENTER 65293
 # endif
 
 # define TWOD 0
@@ -61,8 +64,11 @@
 #undef CUB_SIZE
 #define CUB_SIZE 40
 
-#undef PI
-#define PI 3.14
+// #undef PI
+// #define PI 3.14
+
+#undef P_STEP
+#define P_STEP 10
 
 typedef struct	s_data {
 	void	*img;
@@ -95,13 +101,11 @@ typedef struct s_global
     bool start;
     int width;
     int hiegth;
+	bool event;
 }			t_global;
 
 
 void print_2_arr(char **ptr);
-
-void map_2d(t_global *d);
-
 
 int		pars(t_global *f, int ac, char **av);
 
