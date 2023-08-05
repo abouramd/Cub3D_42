@@ -1,19 +1,8 @@
-/* *********************************************************************** */
-/*                                                                         */
-/*                                                      :::     ::::::::   */
-/*  cub.h                                              :+:     :+:    :+:  */
-/*                                                   +:+ +:+        +:+    */
-/*  By: abouramd <abouramd@student.42.fr>          +#+  +:+      +#+       */
-/*                                               +#+#+#+#+#+  +#+          */
-/*  Created: 05/08/2023 12:15:43 by abouramd          #+#   #+#            */
-/*  Updated: 05/08/2023 13:41:14 by abouramd         ###  ##########.fr    */
-/*                                                                         */
-/* *********************************************************************** */
-#ifndef CUB_H
+# ifndef CUB_H
 # define CUB_H
 # include <fcntl.h>
 # include <mlx.h>
-#include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <errno.h>
@@ -37,61 +26,53 @@
 # define	KEY_A 0
 # define	KEY_D 2
 # else
-# define	KEY_W 119
-# define	KEY_LEFT 65361
-# define	KEY_S 115
-# define	KEY_RIGHT 65363
-# define	KEY_ECH 65307
-# define	KEY_Q 113
-# define	KEY_SP 32
+# define    KEY_W 119
+# define    KEY_LEFT 65361
+# define    KEY_S 115
+# define    KEY_RIGHT 65363
+# define    KEY_ECH 65307
+# define    KEY_Q 113
+# define    KEY_SP 32
 # define	KEY_ENTER 65293
 # endif
 
 # define TWOD 0
 
-# undef		W_HEIGTH
-# define	W_HEIGTH 500
-# undef		W_WIDTH
-# define	W_WIDTH 1000
+# undef W_HEIGTH
+# define W_HEIGTH 500
+# undef W_WIDTH
+# define W_WIDTH 1000
 
 
-#undef	BLACK
-#define	BLACK 0x000000
-#undef	RED
-#define	RED 0xAA0000
-#undef	GREEN
-#define	GREEN 0x00AA00
-#undef	BLUE
-#define	BLUE 0x0000AA
-#undef	WHITE
-#define	WHITE 0xAAAAAA
-#undef	CYAN
-#define	CYAN 0x00AAAA
-#undef	MAGENTA
-#define	MAGENTA 0xAA00AB
-#undef	YELLOW
-#define	YELLOW 0xAAAA00
-#undef	GREY
-#define	GREY 0x808080
+#undef BLACK
+#define BLACK 0x000000
+#undef RED
+#define RED 0xAA0000
+#undef GREEN
+#define GREEN 0x00AA00
+#undef BLUE
+#define BLUE 0x0000AA
+#undef WHITE
+#define WHITE 0xAAAAAA
+#undef CYAN
+#define CYAN 0x00AAAA
+#undef MAGENTA
+#define MAGENTA 0xAA00AB
+#undef YELLOW
+#define YELLOW 0xAAAA00
+#undef GREY
+#define GREY 0x808080
 
-#undef	CUB_SIZE
-#define	CUB_SIZE 40
+#undef CUB_SIZE
+#define CUB_SIZE 40
 
-// #undef PI
-// #define PI 3.14
+#undef P_STEP
+#define P_STEP 10
 
-#undef	P_STEP
-#define	P_STEP 10
-
-<<<<<<< HEAD
 #undef ROTAT_ANG
 #define ROTAT_ANG 0.1
 
 typedef struct	s_data {
-=======
-typedef struct	s_data
-{
->>>>>>> e23722cb2cf870a331f77371001dcd991f9d84b4
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -99,15 +80,15 @@ typedef struct	s_data
 	int		endian;
 	int		heigth;
 	int		width;
-}			t_data;
+}				t_data;
 
 
 typedef struct s_global
 {
 	void	*mlx;
 	void	*mlx_win;
-	t_data 	img;
-	t_data 	mini;
+	t_data  img;
+	t_data  mini;
 	t_data	NO;
 	t_data	SO;
 	t_data	WE;
@@ -115,14 +96,14 @@ typedef struct s_global
 	int		F;
 	int		C;
 	char	**map;
-	double	player_x;
-	double	player_y;
+	double		player_x;
+	double		player_y;
 	char	field_of_view;
-    double	angle_of_view;
-    bool	start;
-    int		width;
-    int		hiegth;
-	bool	event;
+    double angle_of_view;
+    bool start;
+    int width;
+    int hiegth;
+	bool event;
 }			t_global;
 
 
@@ -136,7 +117,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 void	put_err(const char *str, const char *str2);
 
-void	ray_casting(t_global *d);
+void ray_casting(t_global *d);
 
 
 #endif // CUB_H

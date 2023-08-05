@@ -1,6 +1,7 @@
 #include "../include/ray_casting.h"
+#include <stdio.h>
 
-bool	hit(char c)
+bool ft_check_hit(char c)
 {
 	if (c == '1')
 		return (true);
@@ -28,7 +29,7 @@ void	move_player(t_global *data, double ang, double *x, double *y)
 	(*x) += ft_check_sign(co) * 3;
 	(*y) += ft_check_sign(si) * 3;
 	sx = -1;
-	while (++sx < P_STEP)
+ 	while (++sx < P_STEP)
 	{
 		if (ft_check_hit(data->map[(int)(data->player_y) / CUB_SIZE][(int)(*x) / CUB_SIZE]))
 			break;
@@ -47,8 +48,8 @@ void	move_player(t_global *data, double ang, double *x, double *y)
 
 void	ft_move(t_global *data, double ang)
 {
-	double	x;
-	double	y;
+	double x;
+	double y;
 
 	x = data->player_x;
 	y = data->player_y;
