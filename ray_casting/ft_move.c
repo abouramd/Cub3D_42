@@ -26,8 +26,8 @@ void	move_player(t_global *data, double ang, double *x, double *y)
 
 	co = cos(ang);
 	si = sin(ang) * -1;
-	(*x) += ft_check_sign(co) * 3;
-	(*y) += ft_check_sign(si) * 3;
+	(*x) += ft_check_sign(co) * 6;
+	(*y) += ft_check_sign(si) * 6;
 	sx = -1;
  	while (++sx < P_STEP)
 	{
@@ -42,8 +42,8 @@ void	move_player(t_global *data, double ang, double *x, double *y)
 			break;
 		(*y) += si;
 	}
-	(*x) -= ft_check_sign(co) * 3;
-	(*y) -= ft_check_sign(si) * 3;
+	(*x) -= ft_check_sign(co) * 6;
+	(*y) -= ft_check_sign(si) * 6;
 }
 
 void	ft_move(t_global *data, double ang)

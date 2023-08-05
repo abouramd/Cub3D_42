@@ -5,6 +5,7 @@ int ft_loop(t_global *data)
 	if (data->event)
 	{
 		map_2d(data);
+		send_rays(data);
 		mlx_clear_window(data->mlx, data->mlx_win);
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.img, 0, 0);
 		data->event = false;

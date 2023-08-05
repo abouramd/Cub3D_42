@@ -1,7 +1,7 @@
 NAME = cub3D
 DIR =
 SRC_PARS = check_content.c check_map.c check_path.c fill_data.c init.c pars.c put_err.c
-SRC_RAYC = ray_casting.c event.c map_2d.c ft_move.c
+SRC_RAYC = ray_casting.c event.c map_2d.c ft_move.c send_rays.c find_hit_dda.c
 SRC = $(addprefix $(DIR), main.c $(addprefix pars/,$(SRC_PARS)) $(addprefix ray_casting/,$(SRC_RAYC)))
 OBJ = $(SRC:.c=.o)
 INC = -I libft/ -I $(DIR)include

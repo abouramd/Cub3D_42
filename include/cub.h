@@ -81,7 +81,7 @@
 #define P_STEP 10
 
 #undef ROTAT_ANG
-#define ROTAT_ANG 0.1
+#define ROTAT_ANG 0.05
 
 typedef struct	s_data {
 	void	*img;
