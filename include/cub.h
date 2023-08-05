@@ -6,7 +6,7 @@
 /*  By: abouramd <abouramd@student.42.fr>          +#+  +:+      +#+       */
 /*                                               +#+#+#+#+#+  +#+          */
 /*  Created: 05/08/2023 12:15:43 by abouramd          #+#   #+#            */
-/*  Updated: 05/08/2023 12:15:48 by abouramd         ###  ##########.fr    */
+/*  Updated: 05/08/2023 12:36:01 by abouramd         ###  ##########.fr    */
 /*                                                                         */
 /* *********************************************************************** */
 #ifndef CUB_H
@@ -28,12 +28,14 @@
 # if defined(__APPLE__)
 # define    KEY_W 13
 # define    KEY_LEFT 123
-# define    KEY_S 1
-# define    KEY_RIGHT 124
-# define    KEY_ECH 53
-# define    KEY_Q 12
-# define    KEY_SP 49
+# define	KEY_S 1
+# define	KEY_RIGHT 124
+# define	KEY_ECH 53
+# define	KEY_Q 12
+# define	KEY_SP 49
 # define	KEY_ENTER 36
+# define	KEY_A 0
+# define	KEY_D 2
 # else
 # define    KEY_W 119
 # define    KEY_LEFT 65361
