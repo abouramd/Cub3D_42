@@ -6,7 +6,7 @@
 /*  By: abouramd <abouramd@student.42.fr>          +#+  +:+      +#+       */
 /*                                               +#+#+#+#+#+  +#+          */
 /*  Created: 05/08/2023 12:15:43 by abouramd          #+#   #+#            */
-/*  Updated: 05/08/2023 12:36:01 by abouramd         ###  ##########.fr    */
+/*  Updated: 05/08/2023 13:41:14 by abouramd         ###  ##########.fr    */
 /*                                                                         */
 /* *********************************************************************** */
 #ifndef CUB_H
@@ -82,6 +82,9 @@
 
 #undef P_STEP
 #define P_STEP 10
+
+#undef ROTAT_ANG
+#define ROTAT_ANG 0.1
 
 typedef struct	s_data {
 	void	*img;

@@ -1,5 +1,19 @@
 #include "../include/ray_casting.h"
 
+void ft_draw_dir(t_data *data, double x, double y, double ang)
+{
+	double si = sin(ang) * -1;
+	double co = cos(ang);
+	int count = 15;
+
+	while (count--)
+	{
+		my_mlx_pixel_put(data, x, y, YELLOW);
+		x += co;
+		y += si;
+	}
+}
+
 void ft_draw_player(t_data *img, size_t xc, size_t yc, int radius) {
   int err;
   int color;
@@ -49,4 +63,5 @@ void    map_2d(t_global *data)
         j++;
     }
     ft_draw_player(&data->img, data->player_x, data->player_y, 5);
+    ft_draw_dir(&data->img, data->player_x, data->player_y, data->angle_of_view);
 }
