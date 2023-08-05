@@ -6,7 +6,7 @@
 /*  By: abouramd <abouramd@student.42.fr>          +#+  +:+      +#+       */
 /*                                               +#+#+#+#+#+  +#+          */
 /*  Created: 05/08/2023 12:15:43 by abouramd          #+#   #+#            */
-/*  Updated: 05/08/2023 13:41:14 by abouramd         ###  ##########.fr    */
+/*  Updated: 05/08/2023 14:58:17 by abouramd         ###  ##########.fr    */
 /*                                                                         */
 /* *********************************************************************** */
 #ifndef CUB_H
@@ -76,9 +76,6 @@
 
 #undef CUB_SIZE
 #define CUB_SIZE 40
-
-// #undef PI
-// #define PI 3.14
 
 #undef P_STEP
 #define P_STEP 10
