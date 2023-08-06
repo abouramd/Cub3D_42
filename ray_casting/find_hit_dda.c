@@ -33,15 +33,24 @@ void dda_setup(t_dda *dda)
 	dda->tan = tan(ang);
 	dda->co = cos(ang);
 	dda->si = sin(ang);
-	dda->dir_y = (dda->si < 0) - (dda->si >= 0);
-	dda->dir_x = (dda->co >= 0) - (dda->co < 0);
+	// dda->dir_y = (dda->si < 0) - (dda->si >= 0);
+	// dda->dir_x = (dda->co >= 0) - (dda->co < 0);
+	if (dda->si < 0)
+		dda->dir_y = 1;
+	else
+		dda->dir_y = -1;
+	if (dda->co >= 0)
+		dda->dir_x = 1;
+	else
+		dda->dir_x = -1;
 }
 
 void hor_dda(t_global *data, t_dda *dda)
 {
 	dda->y_hit_h = CUB_SIZE * (int)(data->player_y / CUB_SIZE + (dda->dir_y == 1));
+	// if (dda->dir_y == 1)
+	// 	dda->y_hit_h += CUB_SIZE;
 	dda->x_hit_h = data->player_x + (data->player_y - dda->y_hit_h) / dda->tan;
-	
 	while (ft_check_rang(data, dda->x_hit_h, dda->y_hit_h, true))
 	{
 		//my_mlx_pixel_put(&data->img, dda->x_hit_h, dda->y_hit_h, BLUE);
@@ -53,9 +62,10 @@ void hor_dda(t_global *data, t_dda *dda)
 
 void ver_dda(t_global *data, t_dda *dda)
 {
-	dda->x_hit_v = CUB_SIZE * (int)(data->player_x / CUB_SIZE + (dda->dir_x == 1)) ;
+	dda->x_hit_v = CUB_SIZE * (int)(data->player_x / CUB_SIZE + (dda->dir_x == 1));
+	// if (dda->dir_x == 1)
+	// 	dda->x_hit_v += CUB_SIZE;
 	dda->y_hit_v = data->player_y + (data->player_x - dda->x_hit_v) * dda->tan;
-
 	while (ft_check_rang(data, dda->x_hit_v, dda->y_hit_v, false))
 	{
 		//my_mlx_pixel_put(&data->img, dda->x_hit_v, dda->y_hit_v, RED);
