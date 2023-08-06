@@ -50,9 +50,9 @@
 # define TWOD 0
 
 # undef W_HEIGTH
-# define W_HEIGTH 500
+# define W_HEIGTH 1000
 # undef W_WIDTH
-# define W_WIDTH 1000
+# define W_WIDTH 2000
 
 
 #undef BLACK
@@ -68,7 +68,7 @@
 #undef CYAN
 #define CYAN 0x00AAAA
 #undef MAGENTA
-#define MAGENTA 0xAA00AB
+#define MAGENTA 0xAA00AA
 #undef YELLOW
 #define YELLOW 0xAAAA00
 #undef GREY
@@ -83,7 +83,8 @@
 #undef ROTAT_ANG
 #define ROTAT_ANG 0.05
 
-typedef struct	s_data {
+typedef struct	s_data
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -91,15 +92,15 @@ typedef struct	s_data {
 	int		endian;
 	int		heigth;
 	int		width;
-}				t_data;
+}			t_data;
 
 
 typedef struct s_global
 {
 	void	*mlx;
 	void	*mlx_win;
-	t_data  img;
-	t_data  mini;
+	t_data 	img;
+	t_data 	mini;
 	t_data	NO;
 	t_data	SO;
 	t_data	WE;
@@ -107,18 +108,18 @@ typedef struct s_global
 	int		F;
 	int		C;
 	char	**map;
-	double		player_x;
-	double		player_y;
+	double	player_x;
+	double	player_y;
 	char	field_of_view;
-    double angle_of_view;
-    bool start;
-    int width;
-    int hiegth;
-	bool event;
+    double	angle_of_view;
+    bool	start;
+    int		width;
+    int		hiegth;
+	bool	event;
 }			t_global;
 
 
-void print_2_arr(char **ptr);
+void	print_2_arr(char **ptr);
 
 int		pars(t_global *f, int ac, char **av);
 
@@ -128,7 +129,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 void	put_err(const char *str, const char *str2);
 
-void ray_casting(t_global *d);
+void	ray_casting(t_global *d);
 
 
 #endif // CUB_H

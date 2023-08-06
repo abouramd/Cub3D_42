@@ -95,7 +95,8 @@ int	pars(t_global *f, int ac, char **av)
 	f->hiegth = 0;
 	while (f->map[f->hiegth])
 		f->hiegth++;
-	if (git_info(f, f->width * CUB_SIZE, f->hiegth * CUB_SIZE) == -1)
+	//if (git_info(f, f->width * CUB_SIZE, f->hiegth * CUB_SIZE) == -1)
+	if (git_info(f, W_WIDTH, W_HEIGTH) == -1)
 		return (ft_destroy_image(f), -1);
 	get_angle(f);
 	f->event = false;
