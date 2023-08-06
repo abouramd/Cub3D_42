@@ -10,45 +10,35 @@
 // 	return (hight);
 // }
 
-void    fill_from_until(double *from, double *until, double wall_hight)
+void    fill_from_until(t_dda *dda)
 {
-	(*from) = W_HEIGTH / 2 - wall_hight / 2;
-	(*until) = W_HEIGTH / 2 + wall_hight / 2;
-	// if ((*from) < 0)
-	// 	(*from) = 0;
-	// if (((*until) > W_HEIGTH))
-	// 	(*from) = W_HEIGTH;
+	dda->from = W_HEIGTH / 2 - dda->wall_hiegth / 2;
+	dda->until = W_HEIGTH / 2 + dda->wall_hiegth / 2;
 }
 
-void    fake_3d(t_global *data, t_dda *dda, double from, double until, int nb_rays)
+void    fake_3d(t_global *data, t_dda *dda, int nb_rays)
 {
-	int i;
-
-	i = 0;
-	while (i <= from)
+	dda->i = 0;
+	while (dda->i < dda->from)
 	{
-		my_mlx_pixel_put(&data->img, nb_rays, i, BLUE);
-		i++;
+		my_mlx_pixel_put(&data->img, nb_rays, dda->i, BLUE);
+		dda->i++;
 	}
-	while (from <= until && from < W_HEIGTH)
+	while (dda->i < dda->until && dda->i < W_HEIGTH)
 	{
-		my_mlx_pixel_put(&data->img, nb_rays, from, dda->color);
-		from++;
+		dda->color = drwaframe(dda);
+		my_mlx_pixel_put(&data->img, nb_rays, dda->i, dda->color);
+		dda->i++;
 	}
-	while(until < W_HEIGTH)
+	while(dda->i < W_HEIGTH)
 	{
-		my_mlx_pixel_put(&data->img, nb_rays, until, GREEN);
-		until++;
+		my_mlx_pixel_put(&data->img, nb_rays, dda->i, GREEN);
+		dda->i++;
 	}
 }
 
 void	create_walls(t_global *data, t_dda *dda, int nb_rays)
 {
-	double  wall_hight;
-	double  from;
-	double  until;
-
-	wall_hight = dda->wall_hiegth;
-	fill_from_until(&from, &until, wall_hight);
-	fake_3d(data, dda, from, until, nb_rays);
+	fill_from_until(dda);
+	fake_3d(data, dda, nb_rays);
 }

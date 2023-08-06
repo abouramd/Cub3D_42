@@ -19,7 +19,7 @@ void line_draw(t_global *data, t_dda *dda, double x, double y, double i, double 
 	}
 }
 
-void choose_ver_hor(t_dda *dda, double ang)
+void choose_ver_hor(t_global *data, t_dda *dda, double ang)
 {
 	if (dda->dis_v >= dda->dis_h)
 	{
@@ -27,9 +27,9 @@ void choose_ver_hor(t_dda *dda, double ang)
 		dda->x_hit = dda->x_hit_h;
 		dda->y_hit = dda->y_hit_h;
 		if (dda->dir_y == -1)
-			dda->color = RED;
+			dda->img = &data->NO;
 		else
-			dda->color = WHITE;
+			dda->img = &data->SO;
 	}
 	else
 	{
@@ -37,9 +37,9 @@ void choose_ver_hor(t_dda *dda, double ang)
 		dda->x_hit = dda->x_hit_v;
 		dda->y_hit = dda->y_hit_v;
 		if (dda->dir_x == -1)
-			dda->color = YELLOW;
+			dda->img = &data->WE;
 		else
-			dda->color = MAGENTA;
+			dda->img = &data->EA;
 	}
 	dda->dis *= cos(ang);
 	dda->wall_hiegth = WALL_PROJ(dda->dis);
@@ -60,7 +60,7 @@ void send_rays(t_global *data)
 		dda_setup(&dda);
 		ver_dda(data, &dda);
 		hor_dda(data, &dda);
-		choose_ver_hor(&dda, dda.ang - data->angle_of_view);
+		choose_ver_hor(data, &dda, dda.ang - data->angle_of_view);
 		//line_draw(data, &dda, data->player_x, data->player_y, dda.x_hit, dda.y_hit);
 		create_walls(data, &dda, count_rays);
 		count_rays++;

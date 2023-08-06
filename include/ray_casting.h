@@ -22,7 +22,11 @@ typedef struct s_dda
 	double	co;
 	double	dir_x;
 	double	dir_y;
-	int color;
+	int		color;
+	double	from;
+	double	until;
+	int		i;
+	t_data	*img;
 }			t_dda;
 
 int		ft_loop(t_global *data);
@@ -40,5 +44,7 @@ void	send_rays(t_global *data);
 void	dda_setup(t_dda *dda);
 
 void	create_walls(t_global *data, t_dda *dda, int nb_rays);
+
+unsigned int	drwaframe(t_dda *dda);
 
 #endif // !RAY_CASTING_H

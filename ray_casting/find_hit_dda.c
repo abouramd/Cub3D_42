@@ -33,16 +33,16 @@ void dda_setup(t_dda *dda)
 	dda->tan = tan(ang);
 	dda->co = cos(ang);
 	dda->si = sin(ang);
-	// dda->dir_y = (dda->si < 0) - (dda->si >= 0);
-	// dda->dir_x = (dda->co >= 0) - (dda->co < 0);
-	if (dda->si < 0)
-		dda->dir_y = 1;
-	else
-		dda->dir_y = -1;
-	if (dda->co >= 0)
-		dda->dir_x = 1;
-	else
-		dda->dir_x = -1;
+	dda->dir_y = (dda->si < 0) - (dda->si >= 0);
+	dda->dir_x = (dda->co >= 0) - (dda->co < 0);
+	// if (dda->si < 0)
+	// 	dda->dir_y = 1;
+	// else
+	// 	dda->dir_y = -1;
+	// if (dda->co >= 0)
+	// 	dda->dir_x = 1;
+	// else
+	// 	dda->dir_x = -1;
 }
 
 void hor_dda(t_global *data, t_dda *dda)
