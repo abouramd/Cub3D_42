@@ -13,8 +13,8 @@ size_t	skip_white_space(char *str, size_t index)
 
 char	*add_char(char *str, char c)
 {
-	char s[2];
-	char *save;
+	char	s[2];
+	char	*save;
 
 	if (str)
 	{
@@ -23,14 +23,14 @@ char	*add_char(char *str, char c)
 		save = str;
 		str = ft_strjoin(str, s);
 		free(save);
-		return str;
+		return (str);
 	}
 	else
 	{
 		save = malloc(2);
 		save[0] = c;
 		save[1] = 0;
-		return save;
+		return (save);
 	}
 }
 
@@ -47,10 +47,10 @@ int	get_path(char **ptr, char *str, char *s)
 	while (str[index])
 	{
 		if (c == 0 && (str[index] == ' '))
-			break;
-		if ( !c && (str[index] == '\"' || str[index] == '\''))
+			break ;
+		if (!c && (str[index] == '\"' || str[index] == '\''))
 			c = str[index];
-		else if ( c && str[index] == c)
+		else if (c && str[index] == c)
 			c = 0;
 		else
 			(*ptr) = add_char((*ptr), str[index]);
