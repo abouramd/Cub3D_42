@@ -5,7 +5,7 @@
 
 typedef struct s_pars
 {
-	char	*NO;
+	char	*no;
 	char	*SO;
 	char	*WE;
 	char	*EA;

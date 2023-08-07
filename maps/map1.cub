@@ -3,8 +3,8 @@ SO     ./images/SO.xpm
 WE     ./images/WE.xpm
 EA     ./images/EA.xpm
 
-C 200,0,0
-F 100,0,100
+C 140, 180, 210
+F 50, 50, 50
 
 
 1111111111111111111111111111111111

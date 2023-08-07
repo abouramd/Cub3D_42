@@ -42,8 +42,8 @@ int	get_path(char **ptr, char *str, char *s)
 	if ((*ptr))
 		return (put_err("duplicate identifier", s), -1);
 	c = 0;
-	index = skip_white_space(str, 0);
-	while (str[index])
+	index = skip_white_space(str, 0) - 1;
+	while (str[++index])
 	{
 		if (c == 0 && (str[index] == ' '))
 			break ;
@@ -53,7 +53,6 @@ int	get_path(char **ptr, char *str, char *s)
 			c = 0;
 		else
 			(*ptr) = add_char((*ptr), str[index]);
-		index++;
 	}
 	if (!(*ptr))
 		return (put_err("there is no path", str - 3), -1);

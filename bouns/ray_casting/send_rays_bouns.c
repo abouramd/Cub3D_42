@@ -25,9 +25,9 @@ void	choose_ver_hor(t_global *data, t_dda *dda, double ang)
 		dda->x_hit = dda->x_hit_h;
 		dda->y_hit = dda->y_hit_h;
 		if (dda->dir_y == -1)
-			dda->img = &data->NO;
+			dda->img = &data->no;
 		else
-			dda->img = &data->SO;
+			dda->img = &data->so;
 	}
 	else
 	{
@@ -35,9 +35,9 @@ void	choose_ver_hor(t_global *data, t_dda *dda, double ang)
 		dda->x_hit = dda->x_hit_v;
 		dda->y_hit = dda->y_hit_v;
 		if (dda->dir_x == -1)
-			dda->img = &data->WE;
+			dda->img = &data->we;
 		else
-			dda->img = &data->EA;
+			dda->img = &data->ea;
 	}
 	dda->dis *= cos(ang);
 	dda->wall_hiegth = WALL_PROJ(dda->dis);

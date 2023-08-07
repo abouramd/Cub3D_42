@@ -97,7 +97,7 @@ typedef struct s_global
 	void	*mlx_win;
 	t_data 	img;
 	t_data 	mini;
-	t_data	NO;
+	t_data	no;
 	t_data	SO;
 	t_data	WE;
 	t_data	EA;

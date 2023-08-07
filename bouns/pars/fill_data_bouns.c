@@ -18,24 +18,24 @@ int	ft_creat_texters(t_global *f, t_pars *ptr)
 {
     (void) f;
     (void) ptr;
-	f->NO.addr = mlx_get_data_addr(f->NO.img, &f->NO.bits_per_pixel, &f->NO.line_length,
-								&f->NO.endian);
-	if (f->NO.img == NULL)
+	f->no.addr = mlx_get_data_addr(f->no.img, &f->no.bits_per_pixel, &f->no.line_length,
+								&f->no.endian);
+	if (f->no.img == NULL)
 		return (put_err("NO", strerror(errno)), -1);
 
-	f->SO.addr = mlx_get_data_addr(f->SO.img, &f->SO.bits_per_pixel, &f->SO.line_length,
-								&f->SO.endian);
-	if (f->SO.img == NULL)
+	f->so.addr = mlx_get_data_addr(f->so.img, &f->so.bits_per_pixel, &f->so.line_length,
+								&f->so.endian);
+	if (f->so.img == NULL)
 		return (put_err("SO", strerror(errno)), -1);
 
-	f->WE.addr = mlx_get_data_addr(f->WE.img, &f->WE.bits_per_pixel, &f->WE.line_length,
-								&f->WE.endian);
-	if (f->WE.img == NULL)
+	f->we.addr = mlx_get_data_addr(f->we.img, &f->we.bits_per_pixel, &f->we.line_length,
+								&f->we.endian);
+	if (f->we.img == NULL)
 		return (put_err("WE", strerror(errno)), -1);
 	
-	f->EA.addr = mlx_get_data_addr(f->EA.img, &f->EA.bits_per_pixel, &f->EA.line_length,
-								&f->EA.endian);
-	if (f->EA.img == NULL)
+	f->ea.addr = mlx_get_data_addr(f->ea.img, &f->ea.bits_per_pixel, &f->ea.line_length,
+								&f->ea.endian);
+	if (f->ea.img == NULL)
 		return (put_err("EA", strerror(errno)), -1);
     return 0;
 }
@@ -45,17 +45,17 @@ int	ft_creat_image(t_global *f, t_pars *ptr)
 	f->mlx = mlx_init();
 	if (f->mlx == NULL)
 		return (put_err("mlx_init", strerror(errno)), -1);
-	f->NO.img = mlx_xpm_file_to_image(f->mlx, ptr->NO, &f->NO.width , &f->NO.heigth);
-	if (f->NO.img == NULL)
-		return (put_err("NO", strerror(errno)), -1);
-	f->SO.img = mlx_xpm_file_to_image(f->mlx, ptr->SO, &f->SO.width , &f->SO.heigth);
-	if (f->SO.img == NULL)
+	f->no.img = mlx_xpm_file_to_image(f->mlx, ptr->no, &f->no.width , &f->no.heigth);
+	if (f->no.img == NULL)
+		return (put_err("no", strerror(errno)), -1);
+	f->so.img = mlx_xpm_file_to_image(f->mlx, ptr->so, &f->so.width , &f->so.heigth);
+	if (f->so.img == NULL)
 		return (put_err("SO", strerror(errno)), -1);
-	f->WE.img = mlx_xpm_file_to_image(f->mlx, ptr->WE, &f->WE.width , &f->WE.heigth);
-	if (f->WE.img == NULL)
+	f->we.img = mlx_xpm_file_to_image(f->mlx, ptr->we, &f->we.width , &f->we.heigth);
+	if (f->we.img == NULL)
 		return (put_err("WE", strerror(errno)), -1);
-	f->EA.img = mlx_xpm_file_to_image(f->mlx, ptr->EA, &f->EA.width , &f->EA.heigth);
-	if (f->EA.img == NULL)
+	f->ea.img = mlx_xpm_file_to_image(f->mlx, ptr->ea, &f->ea.width , &f->ea.heigth);
+	if (f->ea.img == NULL)
 		return (put_err("EA", strerror(errno)), -1);
 	return (0);
 }

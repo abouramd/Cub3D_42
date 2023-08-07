@@ -2,19 +2,19 @@
 
 void	set_null(t_pars *f, t_global *d)
 {
-	f->NO = NULL;
-	f->SO = NULL;
-	f->WE = NULL;
-	f->EA = NULL;
-	f->F = NULL;
-	f->C = NULL;
+	f->no = NULL;
+	f->so = NULL;
+	f->we = NULL;
+	f->ea = NULL;
+	f->floor = NULL;
+	f->ciel = NULL;
 	f->map = NULL;
 	f->file_content = NULL;
 	d->img.img = NULL;
-	d->NO.img = NULL;
-	d->SO.img = NULL;
-	d->WE.img = NULL;
-	d->EA.img = NULL;
+	d->no.img = NULL;
+	d->so.img = NULL;
+	d->we.img = NULL;
+	d->ea.img = NULL;
 }
 
 void	free_data(t_global *d)
@@ -26,18 +26,18 @@ void	free_data(t_global *d)
 
 void	free_pars(t_pars *pars)
 {
-	if (pars->C)
-		free(pars->C);
-	if (pars->F)
-		free(pars->F);
-	if (pars->NO)
-		free(pars->NO);
-	if (pars->SO)
-		free(pars->SO);
-	if (pars->WE)
-		free(pars->WE);
-	if (pars->EA)
-		free(pars->EA);
+	if (pars->ciel)
+		free(pars->ciel);
+	if (pars->floor)
+		free(pars->floor);
+	if (pars->no)
+		free(pars->no);
+	if (pars->so)
+		free(pars->so);
+	if (pars->we)
+		free(pars->we);
+	if (pars->ea)
+		free(pars->ea);
 	if (pars->file_content)
 		ft_free(pars->file_content);
 	if (pars->map)
@@ -48,14 +48,14 @@ void	ft_destroy_image(t_global *f)
 {
 	if (f->mlx_win)
 		mlx_destroy_window(f->mlx, f->mlx_win);
-	if (f->NO.img)
-		mlx_destroy_image(f->mlx, f->NO.img);
-	if (f->SO.img)
-		mlx_destroy_image(f->mlx, f->SO.img);
-	if (f->WE.img)
-		mlx_destroy_image(f->mlx, f->WE.img);
-	if (f->EA.img)
-		mlx_destroy_image(f->mlx, f->EA.img);
+	if (f->no.img)
+		mlx_destroy_image(f->mlx, f->no.img);
+	if (f->so.img)
+		mlx_destroy_image(f->mlx, f->so.img);
+	if (f->we.img)
+		mlx_destroy_image(f->mlx, f->we.img);
+	if (f->ea.img)
+		mlx_destroy_image(f->mlx, f->ea.img);
 	if (f->img.img)
 		mlx_destroy_image(f->mlx, f->img.img);
 }

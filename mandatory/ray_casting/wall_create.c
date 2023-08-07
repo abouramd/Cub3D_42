@@ -11,7 +11,7 @@ void	fake_3d(t_global *data, t_dda *dda, int nb_rays)
 	dda->i = 0;
 	while (dda->i < dda->from)
 	{
-		my_mlx_pixel_put(&data->img, nb_rays, dda->i, BLUE);
+		my_mlx_pixel_put(&data->img, nb_rays, dda->i, data->ciel);
 		dda->i++;
 	}
 	while (dda->i < dda->until && dda->i < W_HEIGTH)
@@ -22,7 +22,7 @@ void	fake_3d(t_global *data, t_dda *dda, int nb_rays)
 	}
 	while (dda->i < W_HEIGTH)
 	{
-		my_mlx_pixel_put(&data->img, nb_rays, dda->i, GREEN);
+		my_mlx_pixel_put(&data->img, nb_rays, dda->i, data->floor);
 		dda->i++;
 	}
 }

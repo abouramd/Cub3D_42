@@ -47,18 +47,18 @@ int	get_global(t_pars *ptr, char *str)
 	if (!str[index])
 		return (0);
 	if (!strncmp(&str[index], "NO ", 3))
-		return (get_path(&ptr->NO, &str[index + 3], "NO"));
+		return (get_path(&ptr->no, &str[index + 3], "NO"));
 	if (!strncmp(&str[index], "SO ", 3))
-		return (get_path(&ptr->SO, &str[index + 3], "SO"));
+		return (get_path(&ptr->so, &str[index + 3], "SO"));
 	if (!strncmp(&str[index], "WE ", 3))
-		return (get_path(&ptr->WE, &str[index + 3], "WE"));
+		return (get_path(&ptr->we, &str[index + 3], "WE"));
 	if (!strncmp(&str[index], "EA ", 3))
-		return (get_path(&ptr->EA, &str[index + 3], "EA"));
+		return (get_path(&ptr->ea, &str[index + 3], "EA"));
 	if (!strncmp(&str[index], "F ", 2))
-		return (get_color(&ptr->F, &str[index + 2], "F"));
+		return (get_color(&ptr->floor, &str[index + 2], "F"));
 	if (!strncmp(&str[index], "C ", 2))
-		return (get_color(&ptr->C, &str[index + 2], "C"));
-	if (ptr->NO && ptr->SO && ptr->WE && ptr->EA && ptr->C && ptr->F)
+		return (get_color(&ptr->ciel, &str[index + 2], "C"));
+	if (ptr->no && ptr->so && ptr->we && ptr->ea && ptr->ciel && ptr->floor)
 		return (1);
 	return (put_err("You miss some info!!", str), -1);
 }
@@ -67,21 +67,21 @@ int	check_xpm_files(t_pars *ptr)
 {
 	int	fd;
 
-	fd = open(ptr->NO, O_RDONLY);
+	fd = open(ptr->no, O_RDONLY);
 	if (fd == -1)
-		return (put_err(ptr->NO, strerror(errno)), -1);
+		return (put_err(ptr->no, strerror(errno)), -1);
 	close(fd);
-	fd = open(ptr->SO, O_RDONLY);
+	fd = open(ptr->so, O_RDONLY);
 	if (fd == -1)
-		return (put_err(ptr->SO, strerror(errno)), -1);
+		return (put_err(ptr->so, strerror(errno)), -1);
 	close(fd);
-	fd = open(ptr->WE, O_RDONLY);
+	fd = open(ptr->we, O_RDONLY);
 	if (fd == -1)
-		return (put_err(ptr->WE, strerror(errno)), -1);
+		return (put_err(ptr->we, strerror(errno)), -1);
 	close(fd);
-	fd = open(ptr->EA, O_RDONLY);
+	fd = open(ptr->ea, O_RDONLY);
 	if (fd == -1)
-		return (put_err(ptr->EA, strerror(errno)), -1);
+		return (put_err(ptr->ea, strerror(errno)), -1);
 	close(fd);
 	return (0);
 }
@@ -102,7 +102,8 @@ int	check_content(t_pars *ptr)
 			break ;
 		index++;
 	}
-	if (!ptr->NO || !ptr->SO || !ptr->WE || !ptr->EA || !ptr->C || !ptr->F)
+	if (!ptr->no || !ptr->so || !ptr->we
+		|| !ptr->ea || !ptr->ciel || !ptr->floor)
 		return (put_err("the file content", "You miss some info!!"), -1);
 	if (ptr->file_content[index] == NULL)
 		return (put_err("the file content", "No map here!"), -1);
