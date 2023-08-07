@@ -1,7 +1,7 @@
-#ifndef PARS_H
-# define PARS_H
+#ifndef PARS_BONUS_H
+# define PARS_BONUS_H
 
-# include "cub.h"
+# include "cub_bouns.h"
 
 typedef struct s_pars
 {
@@ -9,8 +9,8 @@ typedef struct s_pars
 	char	*SO;
 	char	*WE;
 	char	*EA;
-	int		*F;
-	int		*C;
+	int	*F;
+	int	*C;
 	char	**map;
 	char	**file_content;
 	size_t	player_x;
@@ -45,9 +45,7 @@ int fill_data(t_global *f, t_pars *ptr);
 /* destroy image */
 void ft_destroy_image(t_global *f);
 
-/*pars utils*/
-size_t	skip_white_space(char *str, size_t index);
-char	*add_char(char *str, char c);
-int		get_path(char **ptr, char *str, char *s);
+/* animation setup */
+int ft_animation_pars(t_global *f);
 
 #endif // PARS_H

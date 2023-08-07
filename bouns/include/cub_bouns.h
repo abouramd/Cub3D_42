@@ -1,16 +1,6 @@
-/* *********************************************************************** */
-/*                                                                         */
-/*                                                      :::     ::::::::   */
-/*  cub.h                                              :+:     :+:    :+:  */
-/*                                                   +:+ +:+        +:+    */
-/*  By: abouramd <abouramd@student.42.fr>          +#+  +:+      +#+       */
-/*                                               +#+#+#+#+#+  +#+          */
-/*  Created: 05/08/2023 12:15:43 by abouramd          #+#   #+#            */
-/*  Updated: 05/08/2023 14:58:17 by abouramd         ###  ##########.fr    */
-/*                                                                         */
-/* *********************************************************************** */
-#ifndef CUB_H
-# define CUB_H
+#ifndef CUB_BONUS_H
+# define CUB_BONUS_H
+
 # include <fcntl.h>
 # include <mlx.h>
 #include "../../minilibx-linux/mlx.h"
@@ -26,8 +16,8 @@
 # include <math.h>
 
 # if defined(__APPLE__)
-# define    KEY_W 13
-# define    KEY_LEFT 123
+# define	KEY_W 13
+# define	KEY_LEFT 123
 # define	KEY_S 1
 # define	KEY_RIGHT 124
 # define	KEY_ECH 53
@@ -37,13 +27,13 @@
 # define	KEY_A 0
 # define	KEY_D 2
 # else
-# define    KEY_W 119
-# define    KEY_LEFT 65361
-# define    KEY_S 115
-# define    KEY_RIGHT 65363
-# define    KEY_ECH 65307
-# define    KEY_Q 113
-# define    KEY_SP 32
+# define	KEY_W 119
+# define	KEY_LEFT 65361
+# define	KEY_S 115
+# define	KEY_RIGHT 65363
+# define	KEY_ECH 65307
+# define	KEY_Q 113
+# define	KEY_SP 32
 # define	KEY_ENTER 65293
 # endif
 
@@ -89,13 +79,17 @@ typedef struct	s_data
 {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	int		heigth;
-	int		width;
-}			t_data;
+	int	bits_per_pixel;
+	int	line_length;
+	int	endian;
+	int	heigth;
+	int	width;
+}		t_data;
 
+typedef struct s_anim
+{
+	void	**animation;
+} t_anim;
 
 typedef struct s_global
 {
@@ -107,18 +101,19 @@ typedef struct s_global
 	t_data	SO;
 	t_data	WE;
 	t_data	EA;
-	int		F;
-	int		C;
+	int	F;
+	int	C;
 	char	**map;
 	double	player_x;
 	double	player_y;
 	char	field_of_view;
-    double	angle_of_view;
-    bool	start;
-    int		width;
-    int		hiegth;
+	double	angle_of_view;
+	bool	start;
+	int	width;
+	int	hiegth;
 	bool	event;
-}			t_global;
+	t_anim	anim;
+}		t_global;
 
 
 void	print_2_arr(char **ptr);
