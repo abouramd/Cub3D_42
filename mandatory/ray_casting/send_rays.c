@@ -1,22 +1,5 @@
 #include "../include/ray_casting.h"
 
-// void	line_draw(t_global *data, t_dda *dda, double x, double y, double i, double j)
-// {
-// 	double	t;
-// 	double	n;
-
-// 	t = dda->co;
-// 	n = dda->si * -1;
-// 	while (((dda->dir_x == 1 && x <= i) || (dda->dir_x == -1 && x >= i)) 
-// 		&& ((dda->dir_y == 1 && y <= j) || (dda->dir_y == -1 && y >= j))
-// 		&& (x >= 0 && y >= 0 && x < data->width * CUB_SIZE && y < data->hiegth * CUB_SIZE))
-// 	{
-// 		my_mlx_pixel_put(&data->img, x, y, BLUE);
-// 		x += t;
-// 		y += n;
-// 	}
-// }
-
 void	choose_ver_hor(t_global *data, t_dda *dda, double ang)
 {
 	if (dda->dis_v >= dda->dis_h)
