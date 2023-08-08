@@ -5,12 +5,12 @@
 
 typedef struct s_pars
 {
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
-	int		*F;
-	int		*C;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	int		*floor;
+	int		*ciel;
 	char	**map;
 	char	**file_content;
 	size_t	player_x;
@@ -22,28 +22,28 @@ typedef struct s_pars
 void	put_err(const char *str, const char *str2);
 
 /* check file name */
-int			check_file_name(const char *str, char *ext, char *err);
+int		check_file_name(const char *str, char *ext, char *err);
 
 /* init the data */
-void		set_null(t_pars *f, t_global *d);
+void	set_null(t_pars *f, t_global *d);
 
 /* check path */
-int			check_file(t_pars *ptr, const char *str);
+int		check_file(t_pars *ptr, const char *str);
 
 /* start read the file */
-int			check_content(t_pars *ptr);
+int		check_content(t_pars *ptr);
 
 /* t_pars free */
-void		free_pars(t_pars *pars);
+void	free_pars(t_pars *pars);
 
 /* check the map */
-int check_map(t_pars *ptr, char **s);
+int		check_map(t_pars *ptr, char **s);
 
 /* fill data */
-int fill_data(t_global *f, t_pars *ptr);
+int		fill_data(t_global *f, t_pars *ptr);
 
 /* destroy image */
-void ft_destroy_image(t_global *f);
+void	ft_destroy_image(t_global *f);
 
 /*pars utils*/
 size_t	skip_white_space(char *str, size_t index);
