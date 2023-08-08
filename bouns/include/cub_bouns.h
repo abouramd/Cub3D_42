@@ -114,6 +114,7 @@ typedef struct s_global
 	int	hiegth;
 	bool	event;
 	t_anim	anim;
+	int timer;
 }		t_global;
 
 

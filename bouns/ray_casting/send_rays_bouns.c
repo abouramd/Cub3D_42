@@ -45,6 +45,7 @@ void	choose_ver_hor(t_global *data, t_dda *dda, double ang)
 
 void	send_rays(t_global *data)
 {
+	t_mini mini;
 	t_dda	dda;
 	int		count_rays;
 	double	val;
@@ -64,4 +65,6 @@ void	send_rays(t_global *data)
 		count_rays++;
 		dda.ang -= val;
 	}
+	setup_mini_map(data, &dda, &mini);
+	mini_map(&mini);
 }

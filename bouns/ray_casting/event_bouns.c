@@ -2,11 +2,9 @@
 
 int	ft_loop(t_global *data)
 {
-	static int timer;
-
 	if (!data->start)
 		return (0);
-	controle_spirt(data, timer);
+	controle_spirt(data, data->timer);
 	if (data->event)
 	{
 		send_rays(data);
@@ -14,7 +12,7 @@ int	ft_loop(t_global *data)
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.img, 0, 0);
 		data->event = false;
 	}
-	timer++;
+	data->timer++;
 	return (0);
 }
 

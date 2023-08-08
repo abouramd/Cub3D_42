@@ -71,4 +71,9 @@ int	ft_check_sign(double num);
 
 int ft_mouse(int x, int y, t_global *data);
 
+void setup_mini_map(t_global *data, t_dda *dda, t_mini *mini);
+
+void mini_map(t_mini *mini);
+
+
 #endif // !RAY_CASTING_H

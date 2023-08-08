@@ -103,6 +103,7 @@ int	pars(t_global *f, int ac, char **av)
 		return (ft_destroy_image(f), -1);
 	get_angle(f);
 	ft_animation_pars(f);
+	f->timer = 0;
 	f->event = false;
 	return 0;
 }
