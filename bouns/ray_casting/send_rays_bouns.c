@@ -39,6 +39,7 @@ void	choose_ver_hor(t_global *data, t_dda *dda, double ang)
 		else
 			dda->img = &data->EA;
 	}
+	//data->door;
 	dda->dis *= cos(ang);
 	dda->wall_hiegth = WALL_PROJ(dda->dis);
 }

@@ -25,7 +25,7 @@ void ft_draw_dir(t_data *data, double x, double y, double ang)
 
 	while (count--)
 	{
-		my_mlx_pixel_put(data, x, y, YELLOW);
+		my_mlx_pixel_put(data, x, y, RED);
 		x += co;
 		y += si;
 	}
@@ -36,7 +36,8 @@ void	ft_draw_player(t_data *img, size_t xc, size_t yc, int radius)
 	int   err;
 	int   color;
 	int   x;
-	int   y;  
+	int   y;
+
 	if (radius < 0)
 		return;
 	ft_draw_player(img, xc, yc, radius - 1);
@@ -62,7 +63,11 @@ void draw_map(t_mini *mini, int x, int y)
 {
 	if (mini->x_start >= W_WIDTH || mini->y_start >= W_HEIGTH)
 		return ;
-	if (x < 0 || y < 0 || x >= mini->width || y >= mini->heigth)
+	if (mini->x_start <= 5 || mini->y_start <= 5)
+		my_mlx_pixel_put(mini->img, mini->x_start, mini->y_start, GREEN);
+	else if (mini->x_start >= MINI_WIDTH - 5 || mini->y_start >= MINI_HEIGTH - 5)
+		my_mlx_pixel_put(mini->img, mini->x_start, mini->y_start, GREEN);
+	else if (x < 0 || y < 0 || x >= mini->width || y >= mini->heigth)
 		my_mlx_pixel_put(mini->img, mini->x_start, mini->y_start, BLACK);
 	else if (mini->map[(int)y / MINI_CUBE][(int)x / MINI_CUBE] == '1')
 		my_mlx_pixel_put(mini->img, mini->x_start, mini->y_start, RED);
@@ -86,7 +91,7 @@ void mini_map(t_mini *mini)
 		}
 		mini->y_start++;
 	}
-	ft_draw_player(mini->img, MINI_WIDTH / 2, MINI_HEIGTH / 2, 5);
+	ft_draw_player(mini->img, MINI_WIDTH / 2, MINI_HEIGTH / 2, 3);
 	ft_draw_dir(mini->img, MINI_WIDTH / 2, MINI_HEIGTH / 2, mini->angle);
 }
 

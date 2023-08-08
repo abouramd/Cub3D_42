@@ -37,6 +37,10 @@ int	ft_creat_texters(t_global *f, t_pars *ptr)
 								&f->EA.endian);
 	if (f->EA.img == NULL)
 		return (put_err("EA", strerror(errno)), -1);
+	f->door.addr = mlx_get_data_addr(f->door.img, &f->door.bits_per_pixel, &f->door.line_length,
+								&f->door.endian);
+	if (f->door.img == NULL)
+		return (put_err("DO", strerror(errno)), -1);
     return 0;
 }
 
@@ -57,6 +61,9 @@ int	ft_creat_image(t_global *f, t_pars *ptr)
 	f->EA.img = mlx_xpm_file_to_image(f->mlx, ptr->EA, &f->EA.width , &f->EA.heigth);
 	if (f->EA.img == NULL)
 		return (put_err("EA", strerror(errno)), -1);
+	f->door.img = mlx_xpm_file_to_image(f->mlx, TXT_DOOR, &f->door.width , &f->door.heigth);
+	if (f->door.img == NULL)
+		return (put_err("DOOR", strerror(errno)), -1);
 	return (0);
 }
 
@@ -71,9 +78,7 @@ int	fill_data(t_global *f, t_pars *ptr)
 	f->player_x = ptr->player_x;
 	f->player_y = ptr->player_y;
 	f->F = create_rgb(ptr->F);
-	//f->draw.F = f->F;
 	f->C = create_rgb(ptr->C);
-	//f->draw.C = f->C;
 	f->field_of_view = ptr->field_of_view;
 	return (0);
 }

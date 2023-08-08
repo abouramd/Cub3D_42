@@ -75,6 +75,8 @@
 
 #define WALL_PROJ(d) (CUB_SIZE * W_HEIGTH / d);
 
+#define TXT_DOOR "./images/wood.xpm"
+
 typedef struct	s_data
 {
 	void	*img;
@@ -102,6 +104,7 @@ typedef struct s_global
 	t_data	SO;
 	t_data	WE;
 	t_data	EA;
+	t_data	door;
 	int	F;
 	int	C;
 	char	**map;
