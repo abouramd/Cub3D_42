@@ -2,6 +2,11 @@
 
 int	ft_loop(t_global *data)
 {
+	static int timer;
+
+	if (!data->start)
+		return (0);
+	controle_spirt(data, timer);
 	if (data->event)
 	{
 		send_rays(data);
@@ -9,6 +14,7 @@ int	ft_loop(t_global *data)
 		mlx_put_image_to_window(data->mlx, data->mlx_win, data->img.img, 0, 0);
 		data->event = false;
 	}
+	timer++;
 	return (0);
 }
 
@@ -40,5 +46,26 @@ int	ft_key(int key, t_global *data)
 	if (key == KEY_RIGHT)
 		data->angle_of_view -= ROTAT_ANG;
 	data->event = true;
+	return (0);
+}
+
+int ft_mouse(int x, int y, t_global *data)
+{
+	static int sx;
+
+	if (!data->start)
+		sx = x;
+	else if (x < 0 || y < 0)
+		sx = x;
+	else if (x >= W_WIDTH)
+		sx = x;
+	else if (y >= W_HEIGTH)
+		sx = x;
+	else
+	{
+		data->angle_of_view += ROTAT_ANG * ft_check_sign(sx - x);
+		data->event = true;
+	}
+	sx = x;
 	return (0);
 }

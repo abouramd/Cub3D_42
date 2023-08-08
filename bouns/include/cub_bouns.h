@@ -42,7 +42,7 @@
 # undef W_HEIGTH
 # define W_HEIGTH 1000
 # undef W_WIDTH
-# define W_WIDTH 2000
+# define W_WIDTH 1500
 
 
 #undef BLACK
@@ -88,7 +88,8 @@ typedef struct	s_data
 
 typedef struct s_anim
 {
-	void	**animation;
+	t_data *a; // array of t_data
+	int	af; // animation num frame
 } t_anim;
 
 typedef struct s_global

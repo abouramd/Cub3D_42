@@ -1,21 +1,38 @@
 #include "pars.h"
 
+int	invalid_content(t_pars *ptr, size_t x, size_t y)
+{
+	if (ptr->map[y][x] == ' ' || y == 0 || x == 0
+		|| !ptr->map[y + 1] || !ptr->map[y][x + 1])
+		return (1);
+	if (!(ptr->map[y][x] == '0' || ptr->map[y][x] == 'N'
+		|| ptr->map[y][x] == 'S' || ptr->map[y][x] == 'E'
+		|| ptr->map[y][x] == 'W'))
+		return (2);
+	if ((ptr->map[y][x] == 'N' || ptr->map[y][x] == 'S'
+		|| ptr->map[y][x] == 'E' || ptr->map[y][x] == 'W'))
+		return (3);
+	if ((ptr->map[y][x] == 'N' || ptr->map[y][x] == 'S'
+		|| ptr->map[y][x] == 'E' || ptr->map[y][x] == 'W'))
+		return (4);
+	return (0);
+}
+
 int	map_check(t_pars *ptr, size_t x, size_t y, int *np)
 {
 	if (ptr->map[y][x] == '1')
 		return (0);
-
-	if (ptr->map[y][x] == ' ' || y == 0 || x == 0 || !ptr->map[y + 1] || !ptr->map[y][x + 1])
-		return (put_err("the map should be sorounding by wall", ptr->map[y]), -1);
-	if (!(ptr->map[y][x] == '0' || ptr->map[y][x] == 'N' || ptr->map[y][x] == 'S' || ptr->map[y][x] == 'E' || ptr->map[y][x] == 'W'))
-				return (put_err("Unknowing char", ptr->map[y]), -1);
-	if ((ptr->map[y][x] == 'N' || ptr->map[y][x] == 'S' || ptr->map[y][x] == 'E' || ptr->map[y][x] == 'W') && !(*np)++)
+	if (invalid_content(ptr, x, y) == 1)
+		return (put_err("Not Rounded By Walls", ptr->map[y]), -1);
+	if (invalid_content(ptr, x, y) == 2)
+		return (put_err("Unknowing char", ptr->map[y]), -1);
+	if (invalid_content(ptr, x, y) == 3 && !(*np)++)
 	{
 		ptr->field_of_view = ptr->map[y][x];
 		ptr->player_x = x;
 		ptr->player_y = y;
 	}
-	else if ((ptr->map[y][x] == 'N' || ptr->map[y][x] == 'S' || ptr->map[y][x] == 'E' || ptr->map[y][x] == 'W') && *np)
+	else if (invalid_content(ptr, x, y) == 4 && *np)
 		return (put_err("There is more then one player!!", ptr->map[y]), -1);
 	ptr->map[y][x] = '1';
 	if (map_check(ptr, x + 1, y, np) == -1)
@@ -26,7 +43,6 @@ int	map_check(t_pars *ptr, size_t x, size_t y, int *np)
 		return (-1);
 	if (map_check(ptr, x, y - 1, np) == -1)
 		return (-1);
-
 	return (0);
 }
 
@@ -34,17 +50,19 @@ int	run_check(t_pars *ptr)
 {
 	size_t	x;
 	size_t	y;
+	int		np;
 
 	x = 0;
 	y = 0;
-	int np = 0;
+	np = 0;
 	while (ptr->map[x])
 	{
 		y = 0;
 		while (ptr->map[x][y])
 		{
-			if ((ptr->map[x][y] == '0' || ptr->map[x][y] == 'E' || ptr->map[x][y] == 'N' || ptr->map[x][y] == 'S' || ptr->map[x][y] == 'W')
-				&& map_check(ptr, y, x, &np) == -1)
+			if ((ptr->map[x][y] == '0' || ptr->map[x][y] == 'E'
+				|| ptr->map[x][y] == 'N' || ptr->map[x][y] == 'S'
+				|| ptr->map[x][y] == 'W') && map_check(ptr, y, x, &np) == -1)
 				return (-1);
 			else if (ptr->map[x][y] != '1' && ptr->map[x][y] != ' ')
 				return (put_err("Unknowing char", ptr->map[x]), -1);
@@ -85,10 +103,8 @@ int	copy_map(char ***dst, char **src)
 	return (0);
 }
 
-
 int	check_map(t_pars *ptr, char **s)
 {
-
 	if (copy_map(&ptr->map, s) == -1)
 		return (-1);
 	if (run_check(ptr) == -1)

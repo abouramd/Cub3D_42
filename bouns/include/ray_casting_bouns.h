@@ -25,8 +25,27 @@ typedef struct s_dda
 	double	from;
 	double	until;
 	int	i;
+	t_anim	*an;
 	t_data	*img;
+	int x_c;
+	int y_c;
+	int x_s;
+	int y_s;
 }			t_dda;
+
+typedef struct s_mini
+{
+	int x;
+	int y;
+	int x_start;
+	int y_start;
+	int width;
+	int heigth;
+	double angle;
+	char **map;
+	t_data *img;
+}	t_mini;
+
 
 int		ft_loop(t_global *data);
 void	map_2d(t_global *data);
@@ -45,5 +64,11 @@ void	dda_setup(t_dda *dda);
 void	create_walls(t_global *data, t_dda *dda, int nb_rays);
 
 unsigned int	drwaframe(t_dda *dda);
+
+void controle_spirt(t_global *data, int timer);
+
+int	ft_check_sign(double num);
+
+int ft_mouse(int x, int y, t_global *data);
 
 #endif // !RAY_CASTING_H

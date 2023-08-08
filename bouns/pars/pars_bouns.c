@@ -102,6 +102,7 @@ int	pars(t_global *f, int ac, char **av)
 	if (git_info(f, W_WIDTH, W_HEIGTH) == -1)
 		return (ft_destroy_image(f), -1);
 	get_angle(f);
+	ft_animation_pars(f);
 	f->event = false;
 	return 0;
 }

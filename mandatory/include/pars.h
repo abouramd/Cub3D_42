@@ -45,4 +45,9 @@ int fill_data(t_global *f, t_pars *ptr);
 /* destroy image */
 void ft_destroy_image(t_global *f);
 
+/*pars utils*/
+size_t	skip_white_space(char *str, size_t index);
+char	*add_char(char *str, char c);
+int		get_path(char **ptr, char *str, char *s);
+
 #endif // PARS_H

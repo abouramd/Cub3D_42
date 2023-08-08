@@ -53,6 +53,7 @@ void	send_rays(t_global *data)
 	val = (30 * M_PI / 180);
 	dda.ang = data->angle_of_view + val;
 	val /= W_WIDTH / 2;
+	dda.an = &data->anim;
 	while (count_rays < W_WIDTH)
 	{
 		dda_setup(&dda);
