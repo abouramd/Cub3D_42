@@ -16,7 +16,6 @@
 # include <math.h>
 
 
-
 # if defined(__APPLE__)
 # define	KEY_W 13
 # define	KEY_LEFT 123
@@ -38,8 +37,6 @@
 # define	KEY_SP 32
 # define	KEY_ENTER 65293
 # endif
-
-# define TWOD 0
 
 # undef W_HEIGTH
 # define W_HEIGTH 1000
