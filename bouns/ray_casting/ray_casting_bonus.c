@@ -1,4 +1,4 @@
-#include "../include/ray_casting_bouns.h"
+#include "../include/ray_casting_bonus.h"
 
 void	ray_casting(t_global *data)
 {

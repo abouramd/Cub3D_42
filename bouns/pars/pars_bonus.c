@@ -1,4 +1,4 @@
-#include "../include/pars_bouns.h"
+#include "../include/pars_bonus.h"
 
 #define HIEGTH_WRITE 100
 #define WIDTH_WRITE 120
@@ -25,35 +25,35 @@ void	read_to_play(t_global *data, int x, int y)
 	mlx_string_put(data->mlx, data->mlx_win, x, y + line_size * line++, GREEN, "|_____________________________________|");
 }
 
-void	start_game(t_global *f, int width, int hiegth)
+void	start_game(t_global *f, int width, int height)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	while (y < hiegth)
+	while (y < height)
 	{
 		x = 0;
 		while (x < width)
 		{
-			if (x == width / 2 - WIDTH_WRITE || y == hiegth / 2 - HIEGTH_WRITE)
+			if (x == width / 2 - WIDTH_WRITE || y == height / 2 - HIEGTH_WRITE)
 				my_mlx_pixel_put(&f->img, x, y, GREEN);
-			if (x == width / 2 + WIDTH_WRITE || y == hiegth / 2 + HIEGTH_WRITE)
+			if (x == width / 2 + WIDTH_WRITE || y == height / 2 + HIEGTH_WRITE)
 				my_mlx_pixel_put(&f->img, x, y, GREEN);
 			x ++;
 		}
 		y ++;
 	}
 	mlx_put_image_to_window(f->mlx, f->mlx_win, f->img.img, 0, 0);
-	//read_to_play(f, width, hiegth);
+	//read_to_play(f, width, height);
 }
 
-int	git_info(t_global *f, int width, int hiegth)
+int	git_info(t_global *f, int width, int height)
 {
-	f->mlx_win = mlx_new_window(f->mlx, width, hiegth, "2d map");
+	f->mlx_win = mlx_new_window(f->mlx, width, height, "2d map");
 	if (!f->mlx_win)
 		return -1;
-	f->img.img = mlx_new_image(f->mlx, width, hiegth);
+	f->img.img = mlx_new_image(f->mlx, width, height);
 	if (!f->img.img)
 		return -1;
 	f->img.addr = mlx_get_data_addr(f->img.img, &f->img.bits_per_pixel, &f->img.line_length,
@@ -61,7 +61,7 @@ int	git_info(t_global *f, int width, int hiegth)
 	if (!f->img.addr)
 		return -1;
 	f->start = false;
-	start_game(f, width, hiegth);
+	start_game(f, width, height);
 	return 0;
 }
 
@@ -95,11 +95,10 @@ int	pars(t_global *f, int ac, char **av)
 		return (free_pars(&ptr), ft_destroy_image(f), -1);
 	free_pars(&ptr);
 	f->width = ft_strlen(f->map[0]);
-	f->hiegth = 0;
-	while (f->map[f->hiegth])
-		f->hiegth++;
-	//if (git_info(f, f->width * CUB_SIZE, f->hiegth * CUB_SIZE) == -1)
-	if (git_info(f, W_WIDTH, W_HEIGTH) == -1)
+	f->height = 0;
+	while (f->map[f->height])
+		f->height++;
+	if (git_info(f, W_WIDTH, W_HEIGHT) == -1)
 		return (ft_destroy_image(f), -1);
 	get_angle(f);
 	if (ft_animation_pars(f) == -1)
@@ -108,3 +107,6 @@ int	pars(t_global *f, int ac, char **av)
 	f->event = false;
 	return 0;
 }
+
+
+

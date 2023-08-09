@@ -1,4 +1,4 @@
-#include "../include/ray_casting_bouns.h"
+#include "../include/ray_casting_bonus.h"
 
 int	ft_loop(t_global *data)
 {
@@ -57,7 +57,7 @@ int ft_mouse(int x, int y, t_global *data)
 		sx = x;
 	else if (x >= W_WIDTH)
 		sx = x;
-	else if (y >= W_HEIGTH)
+	else if (y >= W_HEIGHT)
 		sx = x;
 	else
 	{

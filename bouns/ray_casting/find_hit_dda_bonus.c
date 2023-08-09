@@ -1,4 +1,4 @@
-#include "../include/ray_casting_bouns.h"
+#include "../include/ray_casting_bonus.h"
 
 bool	check_door(t_global *data, int x, int y, bool hor)
 {
@@ -29,7 +29,7 @@ bool	ft_check_rang(t_global *data, double x, double y, bool hor)
 		return (false);
 	if (x >= data->width * CUB_SIZE)
 		return (false);
-	if (y >= data->hiegth * CUB_SIZE)
+	if (y >= data->height * CUB_SIZE)
 		return (false);
 	if (check_door(data, x / CUB_SIZE, y / CUB_SIZE, hor))
 		return (false);

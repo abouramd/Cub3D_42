@@ -1,16 +1,16 @@
 #ifndef PARS_BONUS_H
 # define PARS_BONUS_H
 
-# include "cub_bouns.h"
+# include "cub_bonus.h"
 
 typedef struct s_pars
 {
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
-	int	*F;
-	int	*C;
+	char	*no;
+	char	*so;
+	char	*we;
+	char	*ea;
+	int		*floor;
+	int		*ceil;
 	char	**map;
 	char	**file_content;
 	size_t	player_x;
@@ -19,7 +19,7 @@ typedef struct s_pars
 }			t_pars;
 
 /* print error in stderr */
-void	put_err(const char *str, const char *str2);
+void		put_err(const char *str, const char *str2);
 
 /* check file name */
 int			check_file_name(const char *str, char *ext, char *err);
@@ -37,15 +37,20 @@ int			check_content(t_pars *ptr);
 void		free_pars(t_pars *pars);
 
 /* check the map */
-int check_map(t_pars *ptr, char **s);
+int			check_map(t_pars *ptr, char **s);
 
 /* fill data */
-int fill_data(t_global *f, t_pars *ptr);
+int			fill_data(t_global *f, t_pars *ptr);
 
 /* destroy image */
-void ft_destroy_image(t_global *f);
+void		ft_destroy_image(t_global *f);
 
 /* animation setup */
-int ft_animation_pars(t_global *f);
+int			ft_animation_pars(t_global *f);
+
+/* get the path of the xpm file */
+int	get_path(char **ptr, char *str, char *s);
+size_t	skip_white_space(char *str, size_t index);
+
 
 #endif // PARS_H

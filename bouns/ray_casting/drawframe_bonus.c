@@ -1,4 +1,4 @@
-#include "../include/ray_casting_bouns.h"
+#include "../include/ray_casting_bonus.h"
 
 unsigned int	my_mlx_pixel_get(t_data *data, int x, int y)
 {
@@ -16,8 +16,8 @@ unsigned int	drwaframe(t_dda *dda)
 	double	alpha;
 
 	alpha = dda->i - dda->from;
-	dda->y_c = (alpha / dda->wall_hiegth) * dda->img->heigth;
-	dda->y_s = (alpha / dda->wall_hiegth) * dda->an->a[dda->an->af].heigth;
+	dda->y_c = (alpha / dda->wall_height) * dda->img->height;
+	dda->y_s = (alpha / dda->wall_height) * dda->an->a[dda->an->af].height;
 	co = my_mlx_pixel_get(&dda->an->a[dda->an->af], dda->x_s, dda->y_s);
 	if (!dda->door && !(co >> 24))
 		return (co);

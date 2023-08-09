@@ -1,4 +1,4 @@
-#include "../include/ray_casting_bouns.h"
+#include "../include/ray_casting_bonus.h"
 
 void open_door(t_global *data, t_dda *dda)
 {

@@ -1,19 +1,19 @@
-#include "../include/ray_casting_bouns.h"
+#include "../include/ray_casting_bonus.h"
 
 #define MINI_WIDTH (W_WIDTH / 5)
-#define MINI_HEIGTH (W_HEIGTH / 5)
+#define MINI_HEIGHT (W_HEIGHT / 5)
 #define MINI_CUBE 20
 
 void setup_mini_map(t_global *data, t_dda *dda, t_mini *mini)
 {
 	mini->x = (MINI_CUBE * data->player_x) / CUB_SIZE - MINI_WIDTH / 2;
-	mini->y = (MINI_CUBE * data->player_y) / CUB_SIZE - MINI_HEIGTH / 2;
+	mini->y = (MINI_CUBE * data->player_y) / CUB_SIZE - MINI_HEIGHT / 2;
 	mini->x_start = 0;
 	mini->y_start = 0;
 	mini->map = data->map;
 	mini->angle = data->angle_of_view; 
 	mini->width = data->width * MINI_CUBE;
-	mini->heigth = data->hiegth * MINI_CUBE;
+	mini->height = data->height * MINI_CUBE;
 	mini->img = &data->img;
 	mini->x_d = dda->x_d;
 	mini->y_d = dda->y_d;
@@ -63,13 +63,13 @@ void	ft_draw_player(t_data *img, size_t xc, size_t yc, int radius)
 
 void draw_map(t_mini *mini, int x, int y)
 {
-	if (mini->x_start >= W_WIDTH || mini->y_start >= W_HEIGTH)
+	if (mini->x_start >= W_WIDTH || mini->y_start >= W_HEIGHT)
 		return ;
 	if (mini->x_start <= 5 || mini->y_start <= 5)
 		my_mlx_pixel_put(mini->img, mini->x_start, mini->y_start, GREEN);
-	else if (mini->x_start >= MINI_WIDTH - 5 || mini->y_start >= MINI_HEIGTH - 5)
+	else if (mini->x_start >= MINI_WIDTH - 5 || mini->y_start >= MINI_HEIGHT - 5)
 		my_mlx_pixel_put(mini->img, mini->x_start, mini->y_start, GREEN);
-	else if (x < 0 || y < 0 || x >= mini->width || y >= mini->heigth)
+	else if (x < 0 || y < 0 || x >= mini->width || y >= mini->height)
 		my_mlx_pixel_put(mini->img, mini->x_start, mini->y_start, BLACK);
 	else if (mini->map[(int)y / MINI_CUBE][(int)x / MINI_CUBE] == '1')
 		my_mlx_pixel_put(mini->img, mini->x_start, mini->y_start, RED);
@@ -85,7 +85,7 @@ void draw_map(t_mini *mini, int x, int y)
 
 void mini_map(t_mini *mini)
 {
-	while (mini->y_start < MINI_HEIGTH )
+	while (mini->y_start < MINI_HEIGHT )
 	{
 		mini->x_start = 0;
 		while (mini->x_start < MINI_WIDTH)
@@ -95,8 +95,8 @@ void mini_map(t_mini *mini)
 		}
 		mini->y_start++;
 	}
-	ft_draw_player(mini->img, MINI_WIDTH / 2, MINI_HEIGTH / 2, 3);
-	ft_draw_dir(mini->img, MINI_WIDTH / 2, MINI_HEIGTH / 2, mini->angle);
+	ft_draw_player(mini->img, MINI_WIDTH / 2, MINI_HEIGHT / 2, 3);
+	ft_draw_dir(mini->img, MINI_WIDTH / 2, MINI_HEIGHT / 2, mini->angle);
 }
 
 

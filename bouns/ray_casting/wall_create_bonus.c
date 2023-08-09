@@ -1,9 +1,9 @@
-#include "../include/ray_casting_bouns.h"
+#include "../include/ray_casting_bonus.h"
 
 void	fill_from_until(t_dda *dda)
 {
-	dda->from = W_HEIGTH / 2 - dda->wall_hiegth / 2;
-	dda->until = W_HEIGTH / 2 + dda->wall_hiegth / 2;
+	dda->from = W_HEIGHT / 2 - dda->wall_height / 2;
+	dda->until = W_HEIGHT / 2 + dda->wall_height / 2;
 }
 
 void	fake_3d(t_global *data, t_dda *dda, int nb_rays)
@@ -11,18 +11,18 @@ void	fake_3d(t_global *data, t_dda *dda, int nb_rays)
 	dda->i = 0;
 	while (dda->i < dda->from)
 	{
-		my_mlx_pixel_put(&data->img, nb_rays, dda->i, BLUE);
+		my_mlx_pixel_put(&data->img, nb_rays, dda->i, data->ceil);
 		dda->i++;
 	}
-	while (dda->i < dda->until && dda->i < W_HEIGTH)
+	while (dda->i < dda->until && dda->i < W_HEIGHT)
 	{
 		dda->color = drwaframe(dda);
 		my_mlx_pixel_put(&data->img, nb_rays, dda->i, dda->color);
 		dda->i++;
 	}
-	while (dda->i < W_HEIGTH)
+	while (dda->i < W_HEIGHT)
 	{
-		my_mlx_pixel_put(&data->img, nb_rays, dda->i, GREEN);
+		my_mlx_pixel_put(&data->img, nb_rays, dda->i, data->floor);
 		dda->i++;
 	}
 }

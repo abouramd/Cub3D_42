@@ -1,4 +1,4 @@
-#include "../include/pars_bouns.h"
+#include "../include/pars_bonus.h"
 
 void	put_err(const char *str, const char *str2)
 {
