@@ -19,7 +19,7 @@ unsigned int	drwaframe(t_dda *dda)
 	dda->y_c = (alpha / dda->wall_hiegth) * dda->img->heigth;
 	dda->y_s = (alpha / dda->wall_hiegth) * dda->an->a[dda->an->af].heigth;
 	co = my_mlx_pixel_get(&dda->an->a[dda->an->af], dda->x_s, dda->y_s);
-	if (!(co >> 24))
+	if (!dda->door && !(co >> 24))
 		return (co);
 	return (my_mlx_pixel_get(dda->img, dda->x_c, dda->y_c));
 }

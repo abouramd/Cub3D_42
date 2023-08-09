@@ -21,6 +21,9 @@ void	choose_ver_hor(t_global *data, t_dda *dda, double ang)
 {
 	if (dda->dis_v >= dda->dis_h)
 	{
+		dda->door = dda->door_h;
+		dda->x_d = dda->x_d_h;
+		dda->y_d = dda->y_d_h;
 		dda->dis = dda->dis_h;
 		dda->x_hit = dda->x_hit_h;
 		dda->y_hit = dda->y_hit_h;
@@ -31,6 +34,9 @@ void	choose_ver_hor(t_global *data, t_dda *dda, double ang)
 	}
 	else
 	{
+		dda->door = dda->door_v;
+		dda->x_d = dda->x_d_v;
+		dda->y_d = dda->y_d_v;
 		dda->dis = dda->dis_v;
 		dda->x_hit = dda->x_hit_v;
 		dda->y_hit = dda->y_hit_v;
@@ -39,7 +45,8 @@ void	choose_ver_hor(t_global *data, t_dda *dda, double ang)
 		else
 			dda->img = &data->EA;
 	}
-	//data->door;
+	if (dda->door)
+		dda->img = &data->door;
 	dda->dis *= cos(ang);
 	dda->wall_hiegth = WALL_PROJ(dda->dis);
 }
@@ -53,9 +60,13 @@ void	send_rays(t_global *data)
 
 	count_rays = 0;
 	val = (30 * M_PI / 180);
-	dda.ang = data->angle_of_view + val;
-	val /= W_WIDTH / 2;
+	dda.ang = data->angle_of_view;
 	dda.an = &data->anim;
+	data->dda = &dda;
+	open_door(data, &dda);
+	setup_mini_map(data, &dda, &mini);
+	dda.ang += val;
+	val /= W_WIDTH / 2;
 	while (count_rays < W_WIDTH)
 	{
 		dda_setup(&dda);
@@ -66,6 +77,6 @@ void	send_rays(t_global *data)
 		count_rays++;
 		dda.ang -= val;
 	}
-	setup_mini_map(data, &dda, &mini);
 	mini_map(&mini);
 }
+

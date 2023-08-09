@@ -1,9 +1,13 @@
 #include "../include/ray_casting_bouns.h"
 #include <stdio.h>
 
-bool	ft_check_hit(char c)
+bool	ft_check_hit(t_global *data, int y, int x)
 {
-	if (c == '1')
+	if (data->map[y][x] == '1')
+		return (true);
+	if (data->y_d == y && data->x_d == x)
+		return (false);
+	if (data->map[y][x] == 'D')
 		return (true);
 	return (false);
 }
@@ -44,16 +48,16 @@ void	move_player(t_global *data, double ang, double *x, double *y)
 	sx = -1;
 	while (++sx < P_STEP)
 	{
-		if (ft_check_hit(data->map[(int)(data->player_y) / CUB_SIZE]
-			[(int)(*x) / CUB_SIZE]))
+		if (ft_check_hit(data, (int)data->player_y / CUB_SIZE,
+			(int)(*x) / CUB_SIZE))
 			break ;
 		(*x) += co;
 	}
 	sy = -1;
 	while (++sy < P_STEP)
 	{
-		if (ft_check_hit(data->map[(int)(*y) / CUB_SIZE]
-			[(int)(data->player_x) / CUB_SIZE]))
+		if (ft_check_hit(data, (int)(*y) / CUB_SIZE,
+			(int)(data->player_x) / CUB_SIZE))
 			break ;
 		(*y) += si;
 	}
@@ -68,7 +72,7 @@ void	ft_move(t_global *data, double ang)
 	x = data->player_x;
 	y = data->player_y;
 	move_player(data, ang, &x, &y);
-	if (!ft_check_hit(data->map[(int)y / CUB_SIZE][(int)x / CUB_SIZE]))
+	if (!ft_check_hit(data, (int)y / CUB_SIZE, (int)x / CUB_SIZE))
 	{
 		data->player_x = x;
 		data->player_y = y;

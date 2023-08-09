@@ -4,7 +4,7 @@ int	ft_loop(t_global *data)
 {
 	if (!data->start)
 		return (0);
-	controle_spirt(data, data->timer);
+	controle_spirt(data, &data->timer);
 	if (data->event)
 	{
 		send_rays(data);
@@ -65,5 +65,6 @@ int ft_mouse(int x, int y, t_global *data)
 		data->event = true;
 	}
 	sx = x;
+	data->timer += 100;
 	return (0);
 }

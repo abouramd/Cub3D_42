@@ -15,6 +15,8 @@
 # include "../../libft/libft.h"
 # include <math.h>
 
+
+
 # if defined(__APPLE__)
 # define	KEY_W 13
 # define	KEY_LEFT 123
@@ -94,6 +96,8 @@ typedef struct s_anim
 	int	af; // animation num frame
 } t_anim;
 
+typedef struct s_dda t_dda;
+
 typedef struct s_global
 {
 	void	*mlx;
@@ -118,6 +122,9 @@ typedef struct s_global
 	bool	event;
 	t_anim	anim;
 	int timer;
+	t_dda *dda;
+	int	x_d;
+	int	y_d;
 }		t_global;
 
 

@@ -15,6 +15,8 @@ void setup_mini_map(t_global *data, t_dda *dda, t_mini *mini)
 	mini->width = data->width * MINI_CUBE;
 	mini->heigth = data->hiegth * MINI_CUBE;
 	mini->img = &data->img;
+	mini->x_d = dda->x_d;
+	mini->y_d = dda->y_d;
 }
 
 void ft_draw_dir(t_data *data, double x, double y, double ang)
@@ -71,6 +73,8 @@ void draw_map(t_mini *mini, int x, int y)
 		my_mlx_pixel_put(mini->img, mini->x_start, mini->y_start, BLACK);
 	else if (mini->map[(int)y / MINI_CUBE][(int)x / MINI_CUBE] == '1')
 		my_mlx_pixel_put(mini->img, mini->x_start, mini->y_start, RED);
+	else if (mini->y_d == (int)(y / MINI_CUBE) && mini->x_d == (int)(x / MINI_CUBE))
+		my_mlx_pixel_put(mini->img, mini->x_start, mini->y_start, CYAN);
 	else if (mini->map[(int)y / MINI_CUBE][(int)x / MINI_CUBE] == 'D')
 		my_mlx_pixel_put(mini->img, mini->x_start, mini->y_start, YELLOW);
 	else if (mini->map[(int)y / MINI_CUBE][(int)x / MINI_CUBE] == '0')

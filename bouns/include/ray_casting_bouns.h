@@ -9,12 +9,21 @@ typedef struct s_dda
 	double	x_hit;
 	double	y_hit;
 	double	dis;
+	int	x_d;
+	int	y_d;
+	bool	door;
 	double	x_hit_h;
 	double	y_hit_h;
 	double	dis_h;
+	int	x_d_h;
+	int	y_d_h;
+	bool	door_h;
 	double	x_hit_v;
 	double	y_hit_v;
 	double	dis_v;
+	int	x_d_v;
+	int	y_d_v;
+	bool	door_v;
 	double	ang;
 	double	tan;
 	double	si;
@@ -44,6 +53,8 @@ typedef struct s_mini
 	double angle;
 	char **map;
 	t_data *img;
+	int x_d;
+	int y_d;
 }	t_mini;
 
 
@@ -65,7 +76,7 @@ void	create_walls(t_global *data, t_dda *dda, int nb_rays);
 
 unsigned int	drwaframe(t_dda *dda);
 
-void controle_spirt(t_global *data, int timer);
+void controle_spirt(t_global *data, int *timer);
 
 int	ft_check_sign(double num);
 
@@ -75,5 +86,8 @@ void setup_mini_map(t_global *data, t_dda *dda, t_mini *mini);
 
 void mini_map(t_mini *mini);
 
+void	choose_ver_hor(t_global *data, t_dda *dda, double ang);
+
+void open_door(t_global *data, t_dda *dda);
 
 #endif // !RAY_CASTING_H

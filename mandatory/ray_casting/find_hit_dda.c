@@ -48,7 +48,7 @@ void	hor_dda(t_global *data, t_dda *dda)
 		dda->x_hit_h = data->player_x
 			+ (data->player_y - dda->y_hit_h) / dda->tan;
 	}
-	dda->dis_h = fabs((dda->x_hit_h - data->player_x) / cos(dda->ang));
+	dda->dis_h = fabs((dda->y_hit_h - data->player_y) / sin(dda->ang));
 }
 
 void	ver_dda(t_global *data, t_dda *dda)
