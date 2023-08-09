@@ -2,28 +2,65 @@
 
 void	fill_from_until(t_dda *dda)
 {
-	dda->from = W_HEIGHT / 2 - dda->wall_height / 2;
-	dda->until = W_HEIGHT / 2 + dda->wall_height / 2;
+	dda->from = (float)W_HEIGHT / 2 - dda->wall_height / 2;
+	dda->until = (float)W_HEIGHT / 2 + dda->wall_height / 2;
+}
+
+unsigned int	dark_rgb(unsigned int rgb, int range)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = ((rgb >> 16) & 255);
+	g = ((rgb >> 8) & 255);
+	b = (rgb & 255);
+	r -= range;
+	g -= range;
+	b -= range;
+	if (r < 0)
+		r = 0;
+	if (g < 0)
+		g = 0;
+	if (b < 0)
+		b = 0;
+	if (r > 255)
+		r = 255;
+	if (g > 255)
+		g = 255;
+	if (b > 255)
+		b = 255;
+	return (0 << 24 | r << 16 | g << 8 | b);
 }
 
 void	fake_3d(t_global *data, t_dda *dda, int nb_rays)
 {
+	double	range;
+	double	inc;
+
+	range = 0;
+	inc = 255 / ((double)W_HEIGHT / 2);
 	dda->i = 0;
 	while (dda->i < dda->from)
 	{
-		my_mlx_pixel_put(&data->img, nb_rays, dda->i, data->ceil);
+		dda->color = dark_rgb(data->ceil, range);
+		my_mlx_pixel_put(&data->img, nb_rays, dda->i, dda->color);
 		dda->i++;
+		range += inc;
 	}
 	while (dda->i < dda->until && dda->i < W_HEIGHT)
 	{
 		dda->color = drwaframe(dda);
+		dda->color = dark_rgb(dda->color, dda->dis / 4);
 		my_mlx_pixel_put(&data->img, nb_rays, dda->i, dda->color);
 		dda->i++;
 	}
 	while (dda->i < W_HEIGHT)
 	{
-		my_mlx_pixel_put(&data->img, nb_rays, dda->i, data->floor);
+		dda->color = dark_rgb(data->floor, range);
+		my_mlx_pixel_put(&data->img, nb_rays, dda->i, dda->color);
 		dda->i++;
+		range -= inc;
 	}
 }
 
