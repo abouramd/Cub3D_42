@@ -64,6 +64,6 @@ int ft_animation_pars(t_global *f)
 		perror("ft_calloc");
 		return (-1);
 	}
-	return (ft_open_anim(f, f->anim.a, "./images/animation/pacman_dying", ".xpm"));
+	return (ft_open_anim(f, f->anim.a, "./images/animation/anim-", ".xpm"));
 }
 
