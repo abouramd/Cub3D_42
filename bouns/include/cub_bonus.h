@@ -74,6 +74,10 @@
 
 # define MAX_IMG 200
 
+# define MINI_WIDTH (300)
+# define MINI_HEIGHT (200)
+# define MINI_CUBE 20
+
 typedef struct s_data
 {
 	void				*img;

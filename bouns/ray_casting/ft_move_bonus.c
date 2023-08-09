@@ -21,18 +21,10 @@ int	ft_check_sign(double num)
 	return (-1);
 }
 
-void	add_or_sub(double *x, double *y, double co, double si, char c)
+void	add_or_sub(double *x, double *y, double co, double si)
 {
-	if (c == '+')
-	{
-		(*x) += ft_check_sign(co) * 6;
-		(*y) += ft_check_sign(si) * 6;
-	}
-	else
-	{
-		(*x) -= ft_check_sign(co) * 6;
-		(*y) -= ft_check_sign(si) * 6;
-	}
+	(*x) += ft_check_sign(co) * 6;
+	(*y) += ft_check_sign(si) * 6;
 }
 
 void	move_player(t_global *data, double ang, double *x, double *y)
@@ -44,24 +36,24 @@ void	move_player(t_global *data, double ang, double *x, double *y)
 
 	co = cos(ang);
 	si = sin(ang) * -1;
-	add_or_sub(x, y, co, si, '+');
+	add_or_sub(x, y, co, si);
 	sx = -1;
 	while (++sx < P_STEP)
 	{
-		if (ft_check_hit(data, (int)data->player_y / CUB_SIZE,
-			(int)(*x) / CUB_SIZE))
+		if (ft_check_hit(data, (int)data->player_y / CUB_SIZE, (int)(*x)
+			/ CUB_SIZE))
 			break ;
 		(*x) += co;
 	}
 	sy = -1;
 	while (++sy < P_STEP)
 	{
-		if (ft_check_hit(data, (int)(*y) / CUB_SIZE,
-			(int)(data->player_x) / CUB_SIZE))
+		if (ft_check_hit(data, (int)(*y) / CUB_SIZE, (int)(data->player_x)
+				/ CUB_SIZE))
 			break ;
 		(*y) += si;
 	}
-	add_or_sub(x, y, co, si, '-');
+	add_or_sub(x, y, -1 * co, -1 * si);
 }
 
 void	ft_move(t_global *data, double ang)

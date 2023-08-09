@@ -1,13 +1,11 @@
 #include "../include/pars_bonus.h"
 
-int	map_check(t_pars *ptr, size_t x, size_t y, int *np)
+int	map_check_error(t_pars *ptr, size_t x, size_t y, int *np)
 {
-	if (ptr->map[y][x] == '1')
-		return (0);
 	if (ptr->map[y][x] == ' ' || y == 0 || x == 0 || !ptr->map[y + 1]
 		|| !ptr->map[y][x + 1])
-		return (put_err("the map should be sorounding by wall", ptr->map[y]),
-			-1);
+		return (put_err("the map should be sorounding by wall",
+				ptr->map[y]), -1);
 	if (!(ptr->map[y][x] == '0' || ptr->map[y][x] == 'N'
 			|| ptr->map[y][x] == 'S' || ptr->map[y][x] == 'E'
 			|| ptr->map[y][x] == 'W' || ptr->map[y][x] == 'D'))
@@ -22,6 +20,15 @@ int	map_check(t_pars *ptr, size_t x, size_t y, int *np)
 	else if ((ptr->map[y][x] == 'N' || ptr->map[y][x] == 'S'
 				|| ptr->map[y][x] == 'E' || ptr->map[y][x] == 'W') && *np)
 		return (put_err("There is more then one player!!", ptr->map[y]), -1);
+	return (0);
+}
+
+int	map_check(t_pars *ptr, size_t x, size_t y, int *np)
+{
+	if (ptr->map[y][x] == '1')
+		return (0);
+	if (map_check_error(ptr, x, y, np) == -1)
+		return (-1);
 	ptr->map[y][x] = '1';
 	if (map_check(ptr, x + 1, y, np) == -1)
 		return (-1);
@@ -34,14 +41,10 @@ int	map_check(t_pars *ptr, size_t x, size_t y, int *np)
 	return (0);
 }
 
-int	run_check(t_pars *ptr)
+int	run_check(t_pars *ptr, size_t x, size_t y)
 {
-	size_t	x;
-	size_t	y;
-	int		np;
+	int	np;
 
-	x = 0;
-	y = 0;
 	np = 0;
 	while (ptr->map[x])
 	{
@@ -96,7 +99,7 @@ int	check_map(t_pars *ptr, char **s)
 {
 	if (copy_map(&ptr->map, s) == -1)
 		return (-1);
-	if (run_check(ptr) == -1)
+	if (run_check(ptr, 0, 0) == -1)
 		return (-1);
 	ft_free(ptr->map);
 	if (copy_map(&ptr->map, s) == -1)

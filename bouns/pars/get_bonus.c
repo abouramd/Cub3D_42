@@ -34,7 +34,7 @@ char	*add_char(char *str, char c)
 	}
 }
 
-int get_error(char **ptr, char *str, size_t	index, char c)
+int	get_error(char **ptr, char *str, size_t	index, char c)
 {
 	if (!(*ptr))
 		return (put_err("there is no path", str - 3), -1);

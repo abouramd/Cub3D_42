@@ -49,8 +49,7 @@ void		ft_destroy_image(t_global *f);
 int			ft_animation_pars(t_global *f);
 
 /* get the path of the xpm file */
-int	get_path(char **ptr, char *str, char *s);
-size_t	skip_white_space(char *str, size_t index);
-
+int			get_path(char **ptr, char *str, char *s);
+size_t		skip_white_space(char *str, size_t index);
 
 #endif // PARS_H

@@ -33,26 +33,20 @@ bool	ft_check_rang(t_global *data, double x, double y, bool hor)
 		return (false);
 	if (check_door(data, x / CUB_SIZE, y / CUB_SIZE, hor))
 		return (false);
-	if (!hor && check_door(data ,(x / CUB_SIZE) - 1, y / CUB_SIZE, hor))
+	if (!hor && check_door(data, (x / CUB_SIZE) - 1, y / CUB_SIZE, hor))
 		return (false);
 	if (hor && check_door(data, x / CUB_SIZE, (y / CUB_SIZE) - 1, hor))
 		return (false);
 	return (true);
 }
 
-double	norm_angle(double angle)
-{
-	angle = remainder(angle, 2 * M_PI);
-	if (angle < 0)
-		angle += 2 * M_PI;
-	return (angle);
-}
-
 void	dda_setup(t_dda *dda)
 {
 	double	ang;
 
-	ang = norm_angle(dda->ang);
+	ang = remainder(dda->ang, 2 * M_PI);
+	if (ang < 0)
+		ang += 2 * M_PI;
 	dda->tan = tan(ang);
 	dda->co = cos(ang);
 	dda->si = sin(ang);
@@ -71,8 +65,8 @@ void	hor_dda(t_global *data, t_dda *dda)
 	while (ft_check_rang(data, dda->x_hit_h, dda->y_hit_h, true))
 	{
 		dda->y_hit_h += CUB_SIZE * dda->dir_y;
-		dda->x_hit_h = data->player_x
-			+ (data->player_y - dda->y_hit_h) / dda->tan;
+		dda->x_hit_h = data->player_x + (data->player_y - dda->y_hit_h)
+			/ dda->tan;
 	}
 	dda->dis_h = fabs((dda->y_hit_h - data->player_y) / sin(dda->ang));
 }
@@ -88,9 +82,8 @@ void	ver_dda(t_global *data, t_dda *dda)
 	while (ft_check_rang(data, dda->x_hit_v, dda->y_hit_v, false))
 	{
 		dda->x_hit_v += CUB_SIZE * dda->dir_x;
-		dda->y_hit_v = data->player_y
-			+ (data->player_x - dda->x_hit_v) * dda->tan;
+		dda->y_hit_v = data->player_y + (data->player_x - dda->x_hit_v)
+			* dda->tan;
 	}
 	dda->dis_v = fabs((dda->x_hit_v - data->player_x) / cos(dda->ang));
 }
-

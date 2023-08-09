@@ -28,7 +28,7 @@ ifeq ($(UNAME), Linux)
 endif
 
 CC:= cc
-CFLAGS:= #-fsanitize=address -g3
+CFLAGS:= -fsanitize=address -g3
 RM:= rm -rf
 
 all:$(NAME)

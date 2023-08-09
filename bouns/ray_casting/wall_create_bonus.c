@@ -30,11 +30,11 @@ void	fake_3d(t_global *data, t_dda *dda, int nb_rays)
 void	create_walls(t_global *data, t_dda *dda, int nb_rays)
 {
 	double	wall_hit;
-	
+
 	wall_hit = dda->x_hit + dda->y_hit;
 	wall_hit = wall_hit - CUB_SIZE * (int)(wall_hit / CUB_SIZE);
 	dda->x_c = wall_hit / CUB_SIZE * dda->img->width;
-	dda->x_s = wall_hit / CUB_SIZE * dda->an->a[dda->an->af].width;	
+	dda->x_s = wall_hit / CUB_SIZE * dda->an->a[dda->an->af].width;
 	fill_from_until(dda);
 	fake_3d(data, dda, nb_rays);
 }

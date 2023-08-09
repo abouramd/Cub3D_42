@@ -18,7 +18,7 @@ int	ft_loop(t_global *data)
 
 int	ft_destroy_win(t_global *data)
 {
-	(void) data;
+	(void)data;
 	exit(0);
 	return (1);
 }
@@ -44,12 +44,13 @@ int	ft_key(int key, t_global *data)
 	if (key == KEY_RIGHT)
 		data->angle_of_view -= ROTAT_ANG;
 	data->event = true;
+	data->timer += 100;
 	return (0);
 }
 
-int ft_mouse(int x, int y, t_global *data)
+int	ft_mouse(int x, int y, t_global *data)
 {
-	static int sx;
+	static int	sx;
 
 	if (!data->start)
 		sx = x;

@@ -48,11 +48,10 @@ static int	check_file_existed(t_pars *ptr, const char *str)
 
 int	check_file(t_pars *ptr, const char *str)
 {
-	if (check_file_name(str, ".cub", "The file name should end with .cub") ==
-		-1)
+	if (check_file_name(str, ".cub", \
+	"The file name should end with .cub") == -1)
 		return (-1);
 	if (check_file_existed(ptr, str) == -1)
 		return (-1);
 	return (0);
 }
-

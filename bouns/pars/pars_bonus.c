@@ -5,24 +5,27 @@
 
 void	read_to_play(t_global *data, int x, int y)
 {
-	int	line;
-	int	line_size;
-	char s[100][100];
+	int		line;
+	int		line_size;
+	int		i;
+	char	*s[11];
 
 	line = 1;
+	i = 0;
 	line_size = 20;
-	x = x / 2 - WIDTH_WRITE;
-	y = y / 2 - HIEGTH_WRITE;
-	mlx_string_put(data->mlx, data->mlx_win, x, y + line_size * line++, GREEN, "        Welcome to our cud3d :D       ");
-	mlx_string_put(data->mlx, data->mlx_win, x, y + line_size * line++, GREEN, " Press <space> key to start the game. ");
-	mlx_string_put(data->mlx, data->mlx_win, x, y + line_size * line++, GREEN, "____________|Guide lines:|_____________");
-	mlx_string_put(data->mlx, data->mlx_win, x, y + line_size * line++, GREEN, "| - Press \'W\' to go forward         |");
-	mlx_string_put(data->mlx, data->mlx_win, x, y + line_size * line++, GREEN, "| - Press \'S\' to get back           |");
-	mlx_string_put(data->mlx, data->mlx_win, x, y + line_size * line++, GREEN, "| - Press \'->\' to turn right        |");
-	mlx_string_put(data->mlx, data->mlx_win, x, y + line_size * line++, GREEN, "| - Press \'<-\' to turn left         |");
-	mlx_string_put(data->mlx, data->mlx_win, x, y + line_size * line++, GREEN, "| - Press \'ESC\' or \'Q\' quite      |");
-	mlx_string_put(data->mlx, data->mlx_win, x, y + line_size * line++, GREEN, "| - ENJOY!                            |");
-	mlx_string_put(data->mlx, data->mlx_win, x, y + line_size * line++, GREEN, "|_____________________________________|");
+	s[0] = "   Welcome to our cud3d :D";
+	s[1] = " - Press <ENTER> key to start the game.";
+	s[2] = " - Press \'W\' to go forward";
+	s[3] = " - Press \'S\' to get back";
+	s[4] = " - Press \'A\' to go left";
+	s[5] = " - Press \'D\' to go right";
+	s[6] = " - Press \'->\' to turn right";
+	s[7] = " - Press \'<-\' to turn left";
+	s[8] = " - Press \'ESC\' to quite";
+	s[9] = " - ENJOY!";
+	while (i++ < 9 && y < W_HEIGHT)
+		mlx_string_put(data->mlx, data->mlx_win, x, y + line_size * line++,
+			GREEN, s[i]);
 }
 
 void	start_game(t_global *f, int width, int height)
@@ -40,29 +43,29 @@ void	start_game(t_global *f, int width, int height)
 				my_mlx_pixel_put(&f->img, x, y, GREEN);
 			if (x == width / 2 + WIDTH_WRITE || y == height / 2 + HIEGTH_WRITE)
 				my_mlx_pixel_put(&f->img, x, y, GREEN);
-			x ++;
+			x++;
 		}
-		y ++;
+		y++;
 	}
 	mlx_put_image_to_window(f->mlx, f->mlx_win, f->img.img, 0, 0);
-	//read_to_play(f, width, height);
+	read_to_play(f, 0, 0);
 }
 
 int	git_info(t_global *f, int width, int height)
 {
 	f->mlx_win = mlx_new_window(f->mlx, width, height, "2d map");
 	if (!f->mlx_win)
-		return -1;
+		return (-1);
 	f->img.img = mlx_new_image(f->mlx, width, height);
 	if (!f->img.img)
-		return -1;
-	f->img.addr = mlx_get_data_addr(f->img.img, &f->img.bits_per_pixel, &f->img.line_length,
-			&f->img.endian);
+		return (-1);
+	f->img.addr = mlx_get_data_addr(f->img.img, &f->img.bits_per_pixel,
+			&f->img.line_length, &f->img.endian);
 	if (!f->img.addr)
-		return -1;
+		return (-1);
 	f->start = false;
 	start_game(f, width, height);
-	return 0;
+	return (0);
 }
 
 void	get_angle(t_global *f)
@@ -82,10 +85,10 @@ void	get_angle(t_global *f)
 
 int	pars(t_global *f, int ac, char **av)
 {
-	t_pars ptr;
+	t_pars	ptr;
 
 	if (ac != 2)
-		return(put_err("Usage", "./cub3D file_name.cub"), -1);
+		return (put_err("Usage", "./cub3D file_name.cub"), -1);
 	set_null(&ptr, f);
 	if (check_file(&ptr, av[1]) == -1)
 		return (free_pars(&ptr), -1);
@@ -105,8 +108,5 @@ int	pars(t_global *f, int ac, char **av)
 		return (ft_destroy_image(f), -1);
 	f->timer = 0;
 	f->event = false;
-	return 0;
+	return (0);
 }
-
-
-

@@ -1,50 +1,39 @@
 #include "../include/ray_casting_bonus.h"
 
-// void	line_draw(t_global *data, t_dda *dda, double x, double y, double i, double j)
-// {
-// 	double	t;
-// 	double	n;
+void	pick_hor(t_global *data, t_dda *dda)
+{
+	dda->door = dda->door_h;
+	dda->x_d = dda->x_d_h;
+	dda->y_d = dda->y_d_h;
+	dda->dis = dda->dis_h;
+	dda->x_hit = dda->x_hit_h;
+	dda->y_hit = dda->y_hit_h;
+	if (dda->dir_y == -1)
+		dda->img = &data->no;
+	else
+		dda->img = &data->so;
+}
 
-// 	t = dda->co;
-// 	n = dda->si * -1;
-// 	while (((dda->dir_x == 1 && x <= i) || (dda->dir_x == -1 && x >= i)) 
-// 		&& ((dda->dir_y == 1 && y <= j) || (dda->dir_y == -1 && y >= j))
-// 		&& (x >= 0 && y >= 0 && x < data->width * CUB_SIZE && y < data->height * CUB_SIZE))
-// 	{
-// 		my_mlx_pixel_put(&data->img, x, y, BLUE);
-// 		x += t;
-// 		y += n;
-// 	}
-// }
+void	pick_ver(t_global *data, t_dda *dda)
+{
+	dda->door = dda->door_v;
+	dda->x_d = dda->x_d_v;
+	dda->y_d = dda->y_d_v;
+	dda->dis = dda->dis_v;
+	dda->x_hit = dda->x_hit_v;
+	dda->y_hit = dda->y_hit_v;
+	if (dda->dir_x == -1)
+		dda->img = &data->we;
+	else
+		dda->img = &data->ea;
+}
 
 void	choose_ver_hor(t_global *data, t_dda *dda, double ang)
 {
 	if (dda->dis_v >= dda->dis_h)
-	{
-		dda->door = dda->door_h;
-		dda->x_d = dda->x_d_h;
-		dda->y_d = dda->y_d_h;
-		dda->dis = dda->dis_h;
-		dda->x_hit = dda->x_hit_h;
-		dda->y_hit = dda->y_hit_h;
-		if (dda->dir_y == -1)
-			dda->img = &data->no;
-		else
-			dda->img = &data->so;
-	}
+		pick_hor(data, dda);
 	else
-	{
-		dda->door = dda->door_v;
-		dda->x_d = dda->x_d_v;
-		dda->y_d = dda->y_d_v;
-		dda->dis = dda->dis_v;
-		dda->x_hit = dda->x_hit_v;
-		dda->y_hit = dda->y_hit_v;
-		if (dda->dir_x == -1)
-			dda->img = &data->we;
-		else
-			dda->img = &data->ea;
-	}
+		pick_ver(data, dda);
 	if (dda->door)
 		dda->img = &data->door;
 	dda->dis *= cos(ang);
@@ -53,7 +42,7 @@ void	choose_ver_hor(t_global *data, t_dda *dda, double ang)
 
 void	send_rays(t_global *data)
 {
-	t_mini mini;
+	t_mini	mini;
 	t_dda	dda;
 	int		count_rays;
 	double	val;
@@ -79,4 +68,3 @@ void	send_rays(t_global *data)
 	}
 	mini_map(&mini);
 }
-
