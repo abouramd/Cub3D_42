@@ -65,7 +65,7 @@
 # define CUB_SIZE 40
 
 # undef P_STEP
-# define P_STEP 10
+# define P_STEP 15
 
 # undef ROTAT_ANG
 # define ROTAT_ANG 0.05
