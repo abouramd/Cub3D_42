@@ -1,5 +1,4 @@
 #include "../include/ray_casting_bonus.h"
-#include <stdio.h>
 
 bool	ft_check_hit(t_global *data, int y, int x)
 {

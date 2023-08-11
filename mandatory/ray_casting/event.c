@@ -39,6 +39,7 @@ int	ft_key(int key, t_global *data)
 		data->angle_of_view += ROTAT_ANG;
 	if (key == KEY_RIGHT)
 		data->angle_of_view -= ROTAT_ANG;
+	data->angle_of_view = norm_angle(data->angle_of_view);
 	data->event = true;
 	return (0);
 }

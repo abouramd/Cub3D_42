@@ -23,6 +23,14 @@ int	ft_destroy_win(t_global *data)
 	return (1);
 }
 
+double norm_ang(double ang)
+{
+	ang = remainder(ang, 2 * M_PI);
+	if (ang < 0)
+		ang += 2 * M_PI;
+	return (ang);
+}
+
 int	ft_key(int key, t_global *data)
 {
 	if (key == KEY_ENTER)
@@ -43,6 +51,7 @@ int	ft_key(int key, t_global *data)
 		data->angle_of_view += ROTAT_ANG;
 	if (key == KEY_RIGHT)
 		data->angle_of_view -= ROTAT_ANG;
+	data->angle_of_view = norm_ang(data->angle_of_view);
 	data->event = true;
 	data->timer += 100;
 	return (0);
