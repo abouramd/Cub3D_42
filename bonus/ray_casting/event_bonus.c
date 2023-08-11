@@ -6,7 +6,7 @@
 /*   By: zasabri <zasabri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 10:06:09 by zasabri           #+#    #+#             */
-/*   Updated: 2023/08/11 10:06:10 by zasabri          ###   ########.fr       */
+/*   Updated: 2023/08/11 10:14:45 by zasabri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_destroy_win(t_global *data)
 	return (1);
 }
 
-double norm_ang(double ang)
+double	norm_ang(double ang)
 {
 	ang = remainder(ang, 2 * M_PI);
 	if (ang < 0)
