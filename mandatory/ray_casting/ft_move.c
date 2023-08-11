@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_move.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zasabri <zasabri@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/11 10:04:58 by zasabri           #+#    #+#             */
+/*   Updated: 2023/08/11 10:04:59 by zasabri          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/ray_casting.h"
-#include <stdio.h>
 
 bool	ft_check_hit(char c)
 {
@@ -16,20 +27,6 @@ int	ft_check_sign(double num)
 		return (1);
 	return (-1);
 }
-
-// void	add_or_sub(double *x, double *y, double co, double si, char c)
-// {
-// 	if (c == '+')
-// 	{
-// 		(*x) += ft_check_sign(co) * 6;
-// 		(*y) += ft_check_sign(si) * 6;
-// 	}
-// 	else
-// 	{
-// 		(*x) -= ft_check_sign(co) * 6;
-// 		(*y) -= ft_check_sign(si) * 6;
-// 	}
-// }
 
 void	move_player(t_global *data, double ang, double *x, double *y)
 {

@@ -1,9 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_casting.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zasabri <zasabri@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/11 10:05:05 by zasabri           #+#    #+#             */
+/*   Updated: 2023/08/11 10:05:06 by zasabri          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/ray_casting.h"
 
-/*
-mlx_hook(data->mlx_win, 6, (1L<<6) , ft_exit_mouse, data);
-mlx_hook(data->mlx_win, 4, (1L<<2) , ft_mouse_ev, data);
-*/
 void	ray_casting(t_global *data)
 {
 	mlx_hook(data->mlx_win, 2, 1, ft_key, data);
