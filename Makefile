@@ -29,7 +29,7 @@ ifeq ($(UNAME), Linux)
 endif
 
 CC:= cc
-CFLAGS:= -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS:= -Wall -Wextra -Werror -fsanitize=address -g3
 RM:= rm -rf
 
 all:$(NAME)
