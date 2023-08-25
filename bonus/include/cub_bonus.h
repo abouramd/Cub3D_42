@@ -47,6 +47,8 @@
 #  define KEY_Q 113
 #  define KEY_SP 32
 #  define KEY_ENTER 65293
+#  define KEY_A 97
+#  define KEY_D 100
 # endif
 
 # undef W_HEIGHT
