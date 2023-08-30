@@ -76,10 +76,21 @@ int	ft_creat_image(t_global *f, t_pars *ptr)
 
 int	fill_data(t_global *f, t_pars *ptr)
 {
+	int i;
+
 	if (ft_creat_image(f, ptr) == -1)
 		return (-1);
 	if (ft_creat_texters(f, ptr) == -1)
 		return (-1);
+	i = 0;
+	while (ptr->map[i] && !ptr->map[i][skip_white_space(ptr->map[i], 0)])
+		i++;
+	while (ptr->map[i] && ptr->map[i][skip_white_space(ptr->map[i], 0)])
+		i++;
+	while (ptr->map[i] && !ptr->map[i][skip_white_space(ptr->map[i], 0)])
+		i++;
+	if (ptr->map[i])
+		return (put_err("map", "empty line in the map"), -1);
 	f->map = ptr->map;
 	ptr->map = NULL;
 	f->player_x = ptr->player_x;

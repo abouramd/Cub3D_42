@@ -18,7 +18,6 @@ OBJ_B := $(SRC_B:.c=.o)
 INC_B = -I libft/ -I $(DIR_B)include
 LIB_B = -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
 
-
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
 	MLXPATH = ./minilibx-linux
@@ -29,7 +28,7 @@ ifeq ($(UNAME), Linux)
 endif
 
 CC:= cc
-CFLAGS:= -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS:= -Wall -Wextra -Werror -fsanitize=address -g3
 RM:= rm -rf
 
 all:$(NAME)

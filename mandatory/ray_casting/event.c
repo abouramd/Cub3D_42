@@ -43,10 +43,10 @@ int	ft_key(int key, t_global *data)
 		ft_move(data, data->angle_of_view);
 	if (key == KEY_S)
 		ft_move(data, data->angle_of_view + M_PI);
-	// if (key == KEY_A)
-	// 	ft_move(data, data->angle_of_view + M_PI_2);
-	// if (key == KEY_D)
-	// 	ft_move(data, data->angle_of_view - M_PI_2);
+	if (key == KEY_A)
+		ft_move(data, data->angle_of_view + M_PI_2);
+	if (key == KEY_D)
+		ft_move(data, data->angle_of_view - M_PI_2);
 	if (key == KEY_LEFT)
 		data->angle_of_view += ROTAT_ANG;
 	if (key == KEY_RIGHT)

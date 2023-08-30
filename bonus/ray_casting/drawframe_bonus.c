@@ -25,7 +25,7 @@ unsigned int	my_mlx_pixel_get(t_data *data, int x, int y)
 unsigned int	drwaframe(t_dda *dda)
 {
 	unsigned int	co;
-	double			alpha;
+	int			alpha;
 
 	alpha = dda->i - dda->from;
 	dda->y_c = (alpha / dda->wall_height) * dda->img->height;

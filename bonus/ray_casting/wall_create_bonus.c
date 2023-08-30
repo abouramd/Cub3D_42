@@ -30,7 +30,7 @@ unsigned int	dark_rgb(unsigned int rgb, int range)
 	r -= range;
 	g -= range;
 	b -= range;
-	if (r < 0 || r > 255)
+	if (r < 0)
 		r = 0;
 	if (g < 0)
 		g = 0;
@@ -52,25 +52,25 @@ void	fake_3d(t_global *data, t_dda *dda, int nb_rays)
 
 	range = 0;
 	inc = 255 / ((double)W_HEIGHT / 2);
-	dda->i = 0;
-	while (dda->i++ <= dda->from)
+	while (dda->i < dda->from)
 	{
 		dda->color = dark_rgb(data->ceil, range);
-		my_mlx_pixel_put(&data->img, nb_rays, dda->i - 1, dda->color);
+		my_mlx_pixel_put(&data->img, nb_rays, dda->i, dda->color);
 		range += inc;
+		dda->i++;
 	}
 	while (dda->i < dda->until && dda->i < W_HEIGHT)
 	{
-		dda->color = drwaframe(dda);
-		dda->color = dark_rgb(dda->color, dda->dis / 4);
+		dda->color = dark_rgb(drwaframe(dda), dda->dis / 4);
 		my_mlx_pixel_put(&data->img, nb_rays, dda->i, dda->color);
 		dda->i++;
 	}
-	while (dda->i++ < W_HEIGHT)
+	while (dda->i < W_HEIGHT)
 	{
 		dda->color = dark_rgb(data->floor, range);
-		my_mlx_pixel_put(&data->img, nb_rays, dda->i - 1, dda->color);
+		my_mlx_pixel_put(&data->img, nb_rays, dda->i, dda->color);
 		range -= inc;
+		dda->i++;
 	}
 }
 
@@ -78,6 +78,7 @@ void	create_walls(t_global *data, t_dda *dda, int nb_rays)
 {
 	double	wall_hit;
 
+	dda->i = 0;
 	wall_hit = dda->x_hit + dda->y_hit;
 	wall_hit = wall_hit - CUB_SIZE * (int)(wall_hit / CUB_SIZE);
 	dda->x_c = wall_hit / CUB_SIZE * dda->img->width;

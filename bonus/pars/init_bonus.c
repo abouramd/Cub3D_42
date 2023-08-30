@@ -58,6 +58,7 @@ void	free_pars(t_pars *pars)
 
 void	ft_destroy_image(t_global *f)
 {
+	return;
 	if (f->mlx_win)
 		mlx_destroy_window(f->mlx, f->mlx_win);
 	if (f->no.img)
