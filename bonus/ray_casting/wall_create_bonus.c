@@ -53,7 +53,7 @@ void	fake_3d(t_global *data, t_dda *dda, int nb_rays)
 	range = 0;
 	inc = 255 / ((double)W_HEIGHT / 2);
 	dda->i = 0;
-	while (dda->i++ < dda->from)
+	while (dda->i++ <= dda->from)
 	{
 		dda->color = dark_rgb(data->ceil, range);
 		my_mlx_pixel_put(&data->img, nb_rays, dda->i - 1, dda->color);
