@@ -14,7 +14,7 @@
 # define CUB_H
 
 # include <fcntl.h>
-# include <mlx.h>
+// # include <mlx.h>
 # include "../../minilibx-linux/mlx.h"
 # include <stdlib.h>
 # include <unistd.h>

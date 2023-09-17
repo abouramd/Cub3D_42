@@ -22,9 +22,9 @@ UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
 	MLXPATH = ./minilibx-linux
 	INC = -I libft/ -I $(DIR)include -I $MLXPATH
-	LIB = -L libft/ -lft -pthread -L $MLXPATH -lmlx_Linux -L /usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+	LIB = -L libft/ -lft -pthread  ./minilibx-linux/libmlx_Linux.a -L /usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 	INC_B = -I libft/ -I $(DIR_B)include -I $MLXPATH
-	LIB_B = -L libft/ -lft -pthread -L $MLXPATH -lmlx_Linux -L /usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+	LIB_B = -L libft/ -lft -pthread ./minilibx-linux/libmlx_Linux.a  -L /usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 endif
 
 CC:= cc

@@ -18,7 +18,7 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
-# include <mlx.h>
+// # include <mlx.h>
 # include <pthread.h>
 # include <stdbool.h>
 # include <stdio.h>
