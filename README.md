@@ -17,7 +17,7 @@ make a dynamic view inside a maze, in which you’ll have to find your way.
 # Usage
 
 ```bash
-git clone https://github.com/abouramd/Cub3D_42.git
+git clone --recurse-submodules https://github.com/abouramd/Cub3D_42.git
 
 cd Cub3D_42
 
