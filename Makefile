@@ -38,12 +38,16 @@ bouns:$(NAME_B)
 $(NAME):$(OBJ)
 	@make bonus -C libft
 	@echo "\033[1;3;34m - compile libft with the object files.\033[0m"
+	@make -C minilibx-linux
+	@echo "\033[1;3;34m - compile minilibx with the object files.\033[0m"
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(INC) $(LIB)
 	@echo "\033[1;3;32m ✅ $(NAME) is done.\033[0m"
 
 $(NAME_B):$(OBJ_B)
 	@make bonus -C libft
 	@echo "\033[1;3;34m - compile libft with the object files.\033[0m"
+	@make -C minilibx-linux
+	@echo "\033[1;3;34m - compile minilibx-linux with the object files.\033[0m"
 	@$(CC) $(CFLAGS) $(OBJ_B) -o $(NAME_B) $(INC_B) $(LIB_B)
 	@echo "\033[1;3;32m ✅ $(NAME_B) is done.\033[0m"
 
@@ -59,6 +63,7 @@ clean:
 fclean:clean
 	@$(RM) $(NAME) $(NAME_B)
 	@rm -rf libft/libft.a
+	@make clean -C minilibx-linux
 	@echo "\033[1;3;31m ❎ remove libft.a\033[0m"
 	@echo "\033[1;3;31m ❎ remove $(NAME) and $(NAME_B).\033[0m"
 
