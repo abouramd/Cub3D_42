@@ -17,11 +17,11 @@ make a dynamic view inside a maze, in which you’ll have to find your way.
 # Usage
 
 ```bash
-git clone https://githube.com/abouramd/Cub3D_42.git
+git clone https://github.com/abouramd/Cub3D_42.git
 
 cd Cub3D_42
 
 make bonus
 
-./cub3D_bonus maps/map_bouns.cub
+./cub3D_bonus maps/map_bonus.cub
 ```

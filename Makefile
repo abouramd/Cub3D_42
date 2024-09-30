@@ -33,7 +33,7 @@ RM:= rm -rf
 
 all:$(NAME)
 
-bouns:$(NAME_B)
+bonus:$(NAME_B)
 
 $(NAME):$(OBJ)
 	@make bonus -C libft
